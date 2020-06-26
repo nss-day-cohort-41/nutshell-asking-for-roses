@@ -6,11 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/main.css">
-    <title>Document</title>
+    <title>Asking for Roses</title>
 </head>
 
 <body>
-    <article id="container"></article>
+
+    <article id="container">
+        <main>
+            <section class="login__top">
+                <div class="welcome">
+                    <!-- logo above -->
+                </div> 
+                <div class="loginHere">
+                    <form>
+                        <input type="email" id="loginEmail" placeholder="Email Address"></input>
+                        <input type="password" id="loginPassword" placeholder="Password"></input>
+                        <button type="button" class="signInButton">Sign In</button>  
+                    </form>
+                </div>
+                <div class="registerHere">
+                    <h2>New to Asking for Roses?</h2>
+                    <a href="#registrationForm"class="registerLink">Register Here</a>
+                </div>
+                
+            </section>
+
+            <section id="registrationForm hidden">
+                <h2>Registration Form</h2>
+                <form>
+                    <input type="email" id="newEmail" placeholder="Email Address"></input>
+                    <input type="text" id="newUserName" placeholder="User Name"></input>
+                    <input type="password" id="newPassword" placeholder="Password"></input>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password"></input>
+                    <button type="button" class="register">Register</button> 
+                </form>
+
+            </section>
+        </main>
+       
+    </article>
+     <footer>&copy 2020 Asking For Roses</footer>
 </body>
 
 </html>
