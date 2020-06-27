@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- ID = CONTAINER IS RELOADED AFTER THE USER SIGNS IN OR REGISTERS -->
+    <article id="container">
+        <header>
+            <!-- LOGO -->
+            <span>
+                <!-- LOGO IMAGE GOES HERE -->
+            </span>
+            <!-- LOGOUT BUTTON -->
+            <span>
+                <button type="button" class="logOutButton">Log Out</button>
+            </span>
+        </header>
+
+        <!-- ALL CONTENT -->
+        <main>
+                    <!-- TOP CONTAINER  --> 
+            <div class="topContainer">
+                <!-- COLUMN LEFT HOLDS FRIENDS LIST AND NEXT EVENT -->
+                <div class="columnLeft">
+                    <!-- FRIENDS LIST -->
+                    <article class="friendsList">
+
+                                <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
+                        <section class = "friendsList__Item">
+                            <!-- SINGLE USER NAME ..... ADD EMAIL AS STRECH GOAL?-->
+                            <p>Count Chocula</p>
+                            <!-- SINGLE FRIENDS DELETE BUTTON -->
+                            <div>
+                                <button type="button" class="friendsDeleteButton">Delete Friend</button>
+                            </div>
+                        </section>
+                                <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+
+                        <!-- ADD FRIEND BUTTON -->
+                        <div>
+                            <button type="button" class="friendsAddButton"></button>
+                        </div>
+                    </article>
+
+                    <!-- NEXT SINGLE EVENT TO HAPPEN BASED ON A SORT OF DATE/TIME -->
+                    <article class="nextEvents">
+                        <H2>What to do?.. What to do?</H2>
+                        <p>This Next Adventure Awaits YOU!</p>
+                        <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
+                        <section class="nextEvents__Item">
+                            <!-- SINGLE EVENT DETAILS -->
+                            <div class="nextEvents__Item__Content">
+                                <p>Event Name</p>
+                                <p>Event Location</p>
+                                <p>Event Date</p>
+                            </div>
+                            <!-- SINGLE EVENT DELETE BUTTON -->
+                            <div>
+                                <button type="button" class="eventsDeleteButton">Delete Event Button</button>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+                <!-- COLUMN RIGHT HOLDS ARTICLES LIST, MESSAGE BOARDS AND REAMINING EVENTS LIST -->
+                <div class="columnRight">
+                    <!-- ARTICLE LIST -->
+                    <article class="articlesList">
+                        <div class=articleList__Heading>
+                            <h2>Articles to Expand your Mind</h2>
+                        </div>
+                        <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
+                        <section class="articlesList__Item">
+                            <!-- SINGLE ARTICLE ITEM-->
+                            <div class="articlesList__Item__Content">
+                                <p>News Title</p>
+                                <p>Synopsis</p>
+                                <a href="http://www.amazon.com">Full Story</a>
+                                <p>Submitted on: #DATE </p>
+                            </div>
+                            <!-- DELETE SINGLE ARTICLES BUTTON -->
+                            <div>
+                                <button type="button" class="articlesAddButton">Add Article Button</button>
+                            </div>    
+                        </section>
+                        <!-- ADD ARTICLES BUTTON -->
+                        <div>
+                            <button type="button" class="articlesAddButton">Add Article Button</button>
+                        </div>
+                    </article>
+                    <!-- MESSAGING BOARD -->
+                    <div class="messagesBoard">
+                        <!-- MESSAGING BOARD HEADER -->
+                        <div class="messagesBoard__Heading">
+                            <h2>Asking for Roses Message Board</h2>
+                            <p>Please post SFW Content Only.. Thnx</p>
+                        </div>
+                    <article class="messagesList">
+                         <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
+                        <section class="messagesList__Item">
+                            <!-- MESSAGE DETAILS / USERNAME AND USER INPUT -->
+                            <span>
+                                <a class="messagesList__Item__User" href="#friendsRequestAlert">USERNAME</a>
+                                <p class="messagesList__Item__Input">Somones Message Appears Here After it is Submitted</p>
+                            </span>
+                            <!-- MESSAGES EDIT BUTTON -->
+                            <span>
+                                <button type="button" class="messagesEditButton">Edit Message Button</button>
+                            </span>
+                        </section>
+                    </article>
+                    </div>
+                    <!-- EVENTS LIST ;;;; add div around H2 & p????-->
+                    <article class="eventsList">
+                        <H2>What to do?.. What to do?</H2>
+                        <p>See all the other happenings you and your friends have planned</p>
+                        <!-- SINGLE EVENT DELETE BUTTON -->
+                        <div>
+                            <button type="button" class="eventsDeleteButton">Delete Event Button</button>
+                        </div>
+                        <!--!!!!!!!!!!!!!!!!!!!!!!!-->
+                        <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
+                        <section class="eventsList__Item">
+                            <!-- SINGLE EVENT DETAILS -->
+                            <div class="eventsList__Item__Content">
+                                <p>Event Name</p>
+                                <p>Event Location</p>
+                                <p>Event Date</p>
+                            </div>
+                            <!-- SINGLE EVENT DELETE BUTTON -->
+                            <div>
+                                <button type="button" class="eventsDeleteButton">Delete Event Button</button>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+
+            </div>
+            <div class="bottomContainer"></div>
+            
+
+
+
+        </main>
+    </article>
+
+    <!-- FOOTER, NEVER RELOADS -->
+    <footer>&copy 2020 Asking For Roses</footer>
+
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
