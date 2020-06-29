@@ -1,8 +1,8 @@
 //defining factory function responsible for generating user object
-const createUserObject = (username, email, password) => {
+const createUserObject = (email, username, password) => {
     const userObject = {
-        username,
         email,
+        username,
         password
     }
     return userObject
