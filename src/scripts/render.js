@@ -26,7 +26,7 @@ const renderToDom = {
         console.log(messagesArray) // Remove this line later
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            document.querySelector(".messagesList").innerHTML += messageHTML
+            // document.querySelector(".messagesList").innerHTML += messageHTML
         })
     },
 
@@ -48,8 +48,8 @@ const renderToDom = {
         // **
 
         // Separate and sort with completed items at the top of the list, then sorted in order by due date
-        const completeTasks = tasksArray.map(task => {return task.completed = true})
-        const incompleteTasks = tasksArray.map(task => {return task.completed = false})
+        const completeTasks = tasksArray.filter(task => {return task.completed === true})
+        const incompleteTasks = tasksArray.filter(task => {return task.completed === false})
 
         completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
         incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
@@ -58,17 +58,17 @@ const renderToDom = {
         console.log(incompleteTasks) // Remove this line later
         completeTasks.forEach(task => {
             const taskHTML = domObject.taskComponent(task)
-            document.querySelector(".tasksList").innerHTML += taskHTML
+            // document.querySelector(".tasksList").innerHTML += taskHTML
         })
         incompleteTasks.forEach(task => {
             const taskHTML = domObject.taskComponent(task)
-            document.querySelector(".tasksList").innerHTML += taskHTML
+            // document.querySelector(".tasksList").innerHTML += taskHTML
         })
 
 
     },
 
-    eventsList(eventsArray) {
+    eventsList() {
             // **TEST DATA - delete later
             const eventsArray = [{
                 name: "test1",
@@ -86,7 +86,7 @@ const renderToDom = {
             console.log(eventsArray) // Remove this line later
             eventsArray.forEach(event => {
                 const eventHTML = domObject.eventComponent(event)
-                document.querySelector(".eventsList").innerHTML += eventHTML
+                // document.querySelector(".eventsList").innerHTML += eventHTML
             })
     },
 
