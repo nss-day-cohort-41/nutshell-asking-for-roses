@@ -1,0 +1,77 @@
+header {
+    border: .2em solid black
+    }
+    
+footer {
+    border: .2em solid black;
+}
+
+
+button {
+    margin: 1em;
+}
+
+.topContainer {
+    display: flex;
+}
+
+.columnLeft {
+    flex: 1;
+}
+
+.columnRight{
+    flex: 3;
+}
+
+.friendsList {
+    border: .2em solid black;
+
+}
+.friendsList__Item {
+    border: .1em dotted black;
+
+}
+
+.nextEvents {
+    border: .2em solid black;
+
+}
+.nextEvents__Item {
+    border: .1em dotted black;
+
+}   
+.articlesList {
+    border: .2em solid black;
+    display: flex;
+}
+.articlesList__Item {
+    border: .1em dotted black;
+
+}
+
+.messagesBoard {
+    border: .2em solid black;
+}
+
+.messagesList__Item {
+border: .1em dotted black;
+}
+
+.eventsList {
+    border: .2em solid black;
+    display: flex;
+}
+
+.eventsList__Item {
+    border: .1em dotted black;
+
+}
+
+.tasksList {
+    display: flex;
+    border: .2em solid black;
+}
+.tasksList__Item {
+    border: .1em dotted black;
+
+}
