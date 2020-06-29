@@ -1,10 +1,11 @@
+
 const container2= document.querySelector(".container2")
 const hiddenDashboard = document.querySelector(".container")
    hiddenDashboard.style.display = "none"
   //let loadAll= document.getElementById(".container")
    
-const x = document.querySelector(".login")
-x.addEventListener("click", event => { 
+const userLoginSuccessful = document.querySelector(".login")
+userLoginSuccessful.addEventListener("click", event => { 
    // addAll= window.location.assign (".tasksList")
 
    container2.style.display = "none"
@@ -17,8 +18,8 @@ x.addEventListener("click", event => {
 })
 
    
-const y = document.querySelector(".logOutButton")
-y.addEventListener("click", event => { 
+const userLogOutRequest = document.querySelector(".logOutButton")
+userLogOutRequest.addEventListener("click", event => { 
     hiddenDashboard.style.display = "none"
     container2.style.display = "block"
 
