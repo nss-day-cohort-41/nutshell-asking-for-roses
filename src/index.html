@@ -19,9 +19,9 @@
                 </div> 
                 <div class="loginHere">
                     <form>
-                        <input type="email" id="loginEmail" placeholder="Email Address"></input>
-                        <input type="password" id="loginPassword" placeholder="Password"></input>
-                        <button type="button" class="signInButton">Sign In</button>  
+                        <input class="login" type="email" id="loginEmail" placeholder="Email Address"></input>
+                        <input class="login" type="password" id="loginPassword" placeholder="Password"></input>
+                        <button type="button" class="signInButton" disabled>Sign In</button>  
                     </form>
                 </div>
                 <div class="registerHere">
@@ -31,14 +31,14 @@
                 
             </section>
 
-            <section id="registrationForm hidden">
+            <section class="registrationForm hidden">
                 <h2>Registration Form</h2>
                 <form>
-                    <input type="email" id="newEmail" placeholder="Email Address"></input>
-                    <input type="text" id="newUserName" placeholder="User Name"></input>
-                    <input type="password" id="newPassword" placeholder="Password"></input>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password"></input>
-                    <button type="button" class="register">Register</button> 
+                    <input class="registration" type="email" id="newEmail" placeholder="Email Address" required></input>
+                    <input class="registration" type="text" id="newUserName" placeholder="User Name" required></input>
+                    <input class="registration" type="password" id="newPassword" placeholder="Password" required></input>
+                    <input class="registration" type="password" id="confirmPassword" placeholder="Confirm Password" required></input>
+                    <button class="registerButton" type="button" disabled >Register</button> 
                 </form>
 
             </section>
@@ -46,7 +46,6 @@
        
     </article>
      <footer>&copy 2020 Asking For Roses</footer>
-
      <script type="module" src="scripts/main.js"></script>
 </body>
 
