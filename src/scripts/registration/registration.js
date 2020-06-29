@@ -129,6 +129,10 @@ const userRegistration = {
             }
             API.getUserLogin()
                 .then(userObj => {
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> master
                     findRegisteredEmail = userObj.find(user => {
                         return emailInput.value === user.email
                     })
