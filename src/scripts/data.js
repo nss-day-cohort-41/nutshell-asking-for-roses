@@ -3,18 +3,18 @@ const API = {
     // Sisi User GET and POST calls
    
     //GET function that gets all the user information from database
-    getUserLogin () {
+    getUserLogin() {
         return fetch("http://localhost:8088/users")
-            .then( (response) => {
+            .then((response) => {
                 return response.json()
             })
            
     },
-    getUsersArray () {
+    getUsersArray() {
         return this.usersArray
     },
     //POST function that saves object to the API
-    saveUserLogin (userObj) {
+    saveUserLogin(userObj) {
         return fetch("http://localhost:8088/users", {
             method: "POST",
             headers: {
@@ -26,7 +26,7 @@ const API = {
 
 
 
-// Tasha Lane created API fetch calls
+    // Tasha Lane created API fetch calls
 
 
     getArticlesData: () => {
@@ -47,9 +47,61 @@ const API = {
             .then(friends => friends.json())
     },
 
-    getFriendsData: () => {
+    getMessagesData: () => {
         return fetch("http://localhost:8088/messages")
             .then(messages => messages.json())
+    },
+
+
+    newArticlesEntry: (articlesObject) => {
+        return fetch("http://localhost:8808/articles", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(articlesObject),
+        });
+    },
+
+    newEventsEntry: (eventsObject) => {
+        return fetch("http://localhost:8808/events", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(eventsObject),
+        });
+    },
+
+    newTasksEntry: (tasksObject) => {
+        return fetch("http://localhost:8808/tasks", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(tasksObject),
+        });
+    },
+
+    newFriendsEntry: (friendsObject) => {
+        return fetch("http://localhost:8808/friends", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(friendsObject),
+        });
+    },
+    newMessagesEntry: (messagesObject) => {
+        return fetch("http://localhost:8808/messages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(messagesObject),
+        
+        });
     }
+
 }
 export default API
