@@ -1,11 +1,10 @@
 import API from '../data.js'
 import createUserObject from './createUser.js'
 
-
 const userRegistration = {
     //registered user login 
-    registeredUserLogin () {
-        
+    registeredUserLogin() {
+
         const emailLogin = document.querySelector("#loginEmail")
         const passwordLogin = document.querySelector("#loginPassword")
         const signInButton = document.querySelector(".signInButton")
@@ -25,59 +24,54 @@ const userRegistration = {
             //GET user database info, perform userObj.find() to find match for user email input 
             let findPassword;
             API.getUserLogin()
-            .then(userObj => {
-                findPassword = userObj.find(user => {
-                   return passwordLogin.value === user.password 
+                .then(userObj => {
+                    findPassword = userObj.find(user => {
+                        return passwordLogin.value === user.password
+                    })
                 })
-                
-               
-                })
-                //GET user database info, perform userObj.find() to match password input
+            //GET user database info, perform userObj.find() to match password input
             API.getUserLogin()
                 .then(userObj => {
                     const findEmail = userObj.find(user => {
-                       return emailLogin.value === user.email 
+                        return emailLogin.value === user.email
                     })
                     //if mail and password both match, session storage enabled and should show main dashboard
                     if (findEmail && findPassword) {
-                        sessionStorage.setItem("registeredUser", findEmail.id)
+                        sessionStorage.setItem("currentUser", findEmail.id)
                         this.clearLoginFields();
                         emailLogin.style.borderColor = ""
                         passwordLogin.style.borderColor = ""
-                        console.log("stored email:", sessionStorage.getItem("registeredUser"))
-                          //***need to display main dashboard****
-                          //if email not found, alert user
-                    }  else if (!findEmail) {
-                            alert("Your email address does not match existing user");
-                            emailLogin.style.borderColor = "#E34234";
-                            this.clearLoginFields();
-                            signInButton.disabled = true;
-                        }
-                        //else if password not found, alert user
-                        else if(!findPassword) {
-                            alert("Incorrect password");
-                            passwordLogin.style.borderColor = "#E34234";
-                            this.clearLoginFields();
-                            signInButton.disabled = true;
-                            }  
-                        
-                   
-                    })
-                   
+                        console.log("stored email:", sessionStorage.getItem("currentUser"))
+                        //***need to display main dashboard****
+                        //if email not found, alert user
+                    } else if (!findEmail) {
+                        alert("Your email address does not match existing user");
+                        emailLogin.style.borderColor = "#E34234";
+                        this.clearLoginFields();
+                        signInButton.disabled = true;
+                    }
+                    //else if password not found, alert user
+                    else if (!findPassword) {
+                        alert("Incorrect password");
+                        passwordLogin.style.borderColor = "#E34234";
+                        this.clearLoginFields();
+                        signInButton.disabled = true;
+                    }
+
                 })
-               
+        })
+
     },
 
-    
-    clickRegistrationLink () {
+    clickRegistrationLink() {
         //make section class="registrationForm" initially hidden
         const hiddenRegistrationForm = document.querySelector(".registrationForm")
-        hiddenRegistrationForm.style.visibility = "hidden"
+        hiddenRegistrationForm.style.visibility = "hidden";
         //target anchor tag
         const registrationLink = document.querySelector(".registerLink");
         //add click event listener to anchor tag and after clicked display registration form
         registrationLink.addEventListener("click", clickEvent => {
-        hiddenRegistrationForm.style.visibility = "visible"
+            hiddenRegistrationForm.style.visibility = "visible";
         })
     },
 
@@ -87,22 +81,22 @@ const userRegistration = {
         document.querySelector("#loginPassword").value = ""
     },
     //clearing the password fields after failed attempt
-    clearPasswordFields () {
+    clearPasswordFields() {
         document.querySelector("#newPassword").value = "";
-        document.querySelector("#confirmPassword").value = "";  
+        document.querySelector("#confirmPassword").value = "";
     },
     //clearing registration form fields
-    clearRegistrationFields () {
+    clearRegistrationFields() {
         document.querySelector("#newEmail").value = "";
         document.querySelector("#newUserName").value = "";
         document.querySelector("#newPassword").value = "";
         document.querySelector("#confirmPassword").value = "";
     },
 
-/* START OF NEW REGISTRATION FORM CODE */
+    /* START OF NEW REGISTRATION FORM CODE */
 
     //new registration form
-    registrationFormValidator () {
+    registrationFormValidator() {
         const emailInput = document.querySelector("#newEmail");
         const userNameInput = document.querySelector("#newUserName");
         const passwordInput = document.querySelector("#newPassword");
@@ -114,75 +108,71 @@ const userRegistration = {
             registerInput[i].addEventListener("input", event => {
                 if (emailInput.value.length !== 0 && userNameInput.value.length !== 0 && passwordInput.value.length !== 0 && confirmPasswordInput.value.length !== 0) {
                     registerButton.disabled = false;
-                //else if user erases input from one field, it will disable button again until all fields have a value 
+                    //else if user erases input from one field, it will disable button again until all fields have a value 
                 } else if (passwordInput.value.length === 0 || confirmPasswordInput.value.length === 0 || emailInput.value.length === 0 || userNameInput.value.length === 0) {
                     registerButton.disabled = true;
-                } 
+                }
             })
         }
         //adding click event to register button
         registerButton.addEventListener("click", clickEvent => {
             let findRegisteredEmail;
-            //email input field targeted
-            const emailInput = document.querySelector("#newEmail");
-            
-              //if password input does not match confirm password input alert user
+        
+            //if password input does not match confirm password input alert user
             if (passwordInput.value !== confirmPasswordInput.value) {
-                    alert("Passwords do not match. Try again.")
-                    passwordInput.style.borderColor = "#E34234"
-                    confirmPasswordInput.style.borderColor = "#E34234"
-                    this.clearPasswordFields();
-                    registerButton.disabled = true
-                    //checking to see if email has already been registered in database
-                } else if (API.getUserLogin()
+                alert("Passwords do not match. Try again.")
+                passwordInput.style.borderColor = "#E34234"
+                confirmPasswordInput.style.borderColor = "#E34234"
+                this.clearPasswordFields();
+                registerButton.disabled = true
+                //checking to see if email has already been registered in database
+            }
+            API.getUserLogin()
                 .then(userObj => {
+                    console.log(".then", emailInput.value)
                     findRegisteredEmail = userObj.find(user => {
-                       return emailInput.value === user.email    
-                    })        
-                })
-                ) {
-                    alert("Email already exists")
-                    emailInput.style.borderColor = "#E34234";
-                    this.clearRegistrationFields();
-                    registerButton.disabled = true;
-                    //???browser has built in email validator what does reg expression in html5 check for????
-                    //???will alert user if email not valid ie no @ symbol????
-                } else if (emailInput.checkValidity() === false) {
-                    alert("Not a valid email address")
-                    emailInput.style.backgroundColor = "#E34234"
-                    document.querySelector("#newEmail").value = "";
-                    //if everything is filled out correctly... display main page
-                } else {
-                     //***need to display main dashboard**** (may not need the border color change)
-                     passwordInput.style.borderColor = ""
-                     confirmPasswordInput.style.borderColor = ""
-                    //if everything is correct, use created user object and POST, then store that response into session storage
-                     const userObjectGenerator = createUserObject(emailInput.value, userNameInput.value, passwordInput.value);
-                     API.saveUserLogin(userObjectGenerator)
-                     .then( () => {
-                         return API.getUserLogin()
-                     }).then(response => {
-                         response.find(userObj => {
-                             if (emailInput.value === userObj.email) {
-                             sessionStorage.setItem("newUser", userObj.id)
-                             console.log("stored userId:", sessionStorage.getItem("newUser"))
+                        return emailInput.value === user.email
+                    })
 
-                             }
-                             
-                         })
-                     })
-                     this.clearRegistrationFields(); 
-                     registerButton.disabled = true; 
+                    if (findRegisteredEmail) {
+                        alert("Email already exists")
+                        emailInput.style.borderColor = "#E34234";
+                        this.clearRegistrationFields();
+                        registerButton.disabled = true;
                     }
-                 
+
+                    //checking validity of email
+                    else if (emailInput.checkValidity() === false) {
+                        alert("Not a valid email address")
+                        emailInput.style.borderColor= "#E34234"
+                        document.querySelector("#newEmail").value = "";
+                    //if everything is filled out correctly... display main page
+                    } else {
+                        //***need to display main dashboard**** (may not need the border color change)
+                        passwordInput.style.borderColor = ""
+                        confirmPasswordInput.style.borderColor = ""
+                        //if everything is correct, use created user object and POST, then store that response into session storage
+                        const userObjectGenerator = createUserObject(emailInput.value, userNameInput.value, passwordInput.value);
+                        API.saveUserLogin(userObjectGenerator)
+                            .then(() => API.getUserLogin()
+                            ).then(userObj => {
+                                const findNewEmail = userObj.find(user => {
+                                    return emailInput.value === user.email
+                                })
+                                sessionStorage.setItem("currentUser", findNewEmail.id)
+                                console.log("stored userId:", sessionStorage.getItem("currentUser"))
+                                this.clearRegistrationFields();
+                                registerButton.disabled = true;
+                            })
+                    }
                 })
-                
-            }          
-       
+        })
+
+    }
+
 }
 
-// sessionStorage.setItem("newUser", JSON.stringify(userObj))
-//                     console.log(sessionStorage.getItem("newUser"))
+
 // // Save data to sessionStorage
 // sessionStorage.setItem('key', 'value');
 
