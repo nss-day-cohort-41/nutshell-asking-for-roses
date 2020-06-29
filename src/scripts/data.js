@@ -19,7 +19,7 @@ const API = {
             .then(friends => friends.json())
     },
 
-    getFriendsData: () => {
+    getMessagesData: () => {
         return fetch("http://localhost:8088/messages")
             .then(messages => messages.json())
     }
