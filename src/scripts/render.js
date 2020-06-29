@@ -34,24 +34,37 @@ const renderToDom = {
         // **TEST DATA - delete later
         const tasksArray = [{
             name: "test1",
-            date: "2020-06-05"
+            dueDate: "2020-06-05",
+            completed: false
         }, {
             name: "test2",
-            date: "2020-05-04"
+            dueDate: "2020-05-04",
+            completed: true
         }, {
             name: "test3",
-            date: "2020-06-21"
+            dueDate: "2020-06-21",
+            completed: false
         }]
         // **
-        const completeTasks = tasksArray.map(task => return task.completed = true)
-        const incompleteTasks = tasksArray.map(task => return task.completed = false)
 
-        tasksArray.sort((task1, task2) => new Date(task2.date) - new Date(task1.date))
-        console.log(tasksArray) // Remove this line later
-        tasksArray.forEach(task => {
+        // Separate and sort with completed items at the top of the list, then sorted in order by due date
+        const completeTasks = tasksArray.map(task => {return task.completed = true})
+        const incompleteTasks = tasksArray.map(task => {return task.completed = false})
+
+        completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
+        incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
+
+        console.log(completeTasks) // Remove this line later
+        console.log(incompleteTasks) // Remove this line later
+        completeTasks.forEach(task => {
             const taskHTML = domObject.taskComponent(task)
             document.querySelector(".tasksList").innerHTML += taskHTML
         })
+        incompleteTasks.forEach(task => {
+            const taskHTML = domObject.taskComponent(task)
+            document.querySelector(".tasksList").innerHTML += taskHTML
+        })
+
 
     },
 
