@@ -1,7 +1,7 @@
 // Tasha Lane created API fetch calls
 
 const API = {
-    getArticleData: () => {
+    getArticlesData: () => {
         return fetch("http://localhost:8088/articles")
             .then(articles => articles.json())
     },
