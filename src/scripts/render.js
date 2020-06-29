@@ -2,10 +2,11 @@ import domObject from "./domobject.js"
 
 /* Object which renders data to each section of the Dashboard
 
-Object outline by David Larsen */
+Object outline and messagesList method by David Larsen */
 
 const renderToDom = {
 
+    // Render the list of messages in the chat window
     messagesList() {
         // **TEST DATA - delete later
         const messageArray = [{
@@ -20,8 +21,9 @@ const renderToDom = {
         }]
         // **
 
+        // Sort list of messages by date and render each message to the DOM
         messageArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
-        console.log(messageArray)
+        console.log(messageArray) // Remove this line later
         messageArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
             document.querySelector(".messagesList").innerHTML += messageHTML
