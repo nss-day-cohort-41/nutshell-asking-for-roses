@@ -41,7 +41,7 @@ const userRegistration = {
                         this.clearLoginFields();
                         emailLogin.style.borderColor = ""
                         passwordLogin.style.borderColor = ""
-                        console.log("stored email:", sessionStorage.getItem("currentUser"))
+                        console.log("stored user:", sessionStorage.getItem("currentUser"))
                         //***need to display main dashboard****
                         //if email not found, alert user
                     } else if (!findEmail) {
@@ -58,7 +58,7 @@ const userRegistration = {
                         signInButton.disabled = true;
                     }
 
-                })
+             })
         })
 
     },
@@ -129,7 +129,6 @@ const userRegistration = {
             }
             API.getUserLogin()
                 .then(userObj => {
-                    console.log(".then", emailInput.value)
                     findRegisteredEmail = userObj.find(user => {
                         return emailInput.value === user.email
                     })
