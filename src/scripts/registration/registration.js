@@ -1,15 +1,11 @@
 import API from '../data.js'
 import createUserObject from './createUser.js'
 
-const userRegistration = {
-    // getInfo () {
-    //     return fetch("http://localhost:8088/users?q=email").then(response => {
-    //         return response.json()
-    //     }).then(array => console.log(array))
 
-    // },
+const userRegistration = {
     //registered user login 
     registeredUserLogin () {
+        
         const emailLogin = document.querySelector("#loginEmail")
         const passwordLogin = document.querySelector("#loginPassword")
         const signInButton = document.querySelector(".signInButton")
@@ -24,64 +20,46 @@ const userRegistration = {
         }
         //click event on registered user login button to find matching email in user database and saving that in session storage 
         signInButton.addEventListener("click", clickEvent => {
-        //    let userArr = API.getUsersArray(API.usersArray)
-        //     console.log(userArr)
-             API.getUserLogin()
-                // .then(response => response.json())
+            //GET user database info, perform userObj.find() to find match for user email input 
+            let findPassword;
+            API.getUserLogin()
+            .then(userObj => {
+                findPassword = userObj.find(user => {
+                   return passwordLogin.value === user.password 
+                })
+                
+               
+                })
+            API.getUserLogin()
                 .then(userObj => {
-                    const findEmail = userObj.find(object => {
-                       return emailLogin.value === object.email 
-                    
-                       
-          
-                        
+                    const findEmail = userObj.find(user => {
+                       return emailLogin.value === user.email 
                     })
-                    if(findEmail) {
+                    if (findEmail && findPassword) {
                         sessionStorage.setItem("registeredUser", findEmail.id)
                         this.clearLoginFields();
-                        console.log("stored email:" , sessionStorage.getItem("registeredUser"))
-                    }  else {
+                        emailLogin.style.borderColor = ""
+                        passwordLogin.style.borderColor = ""
+                        console.log("stored email:", sessionStorage.getItem("registeredUser"))
+                          //***need to display main dashboard****
+                    }  else if (!findEmail) {
                             alert("Your email address does not match existing user");
                             emailLogin.style.borderColor = "#E34234";
                             this.clearLoginFields();
-                           }
-                     
+                            signInButton.disabled = true;
+                        }
+                        else if(!findPassword) {
+                            alert("Incorrect password");
+                            passwordLogin.style.borderColor = "#E34234";
+                            this.clearLoginFields();
+                            signInButton.disabled = true;
+                            }  
+                        
                    
                     })
-
-                    
+                   
                 })
-                
-
-                  //???How to give alert if not in database!!?? Goes through the whole array and not stopping wh     
-            
-    
-     
-
-        
                
-                    //     const expression = (userObj.email ===  emailLogin.value ) 
-                    //     switch (expression) {
-                    //         case true:
-                    //             sessionStorage.setItem("registeredUser", userObj.email)
-                    //             this.clearLoginFields();
-                    //             console.log("stored email:" , sessionStorage.getItem("registeredUser"))
-                    //             break;
-                            
-                    //         case false:
-                    //             alert("Your email address does not match existing user");
-                    //             emailLogin.style.borderColor = "#E34234";
-                    //             this.clearLoginFields();
-                    //             break;
-                    // }
-                  
-
-                    
-                        
-                        //***need to display main dashboard****
-                     //***still need to give alert if email or password does not match (below?)***
-
-
     },
 
     //adding click event on new registration hyperlink then displaying our hidden registration form
@@ -115,26 +93,6 @@ const userRegistration = {
         document.querySelector("#confirmPassword").value = "";
     },
 
-    //function for checking to see if email already in database (NOT WORKING)
-    registeredEmailValidator() {
-        const emailInput = document.querySelector("#newEmail");
-        API.getUserLogin()
-            .then(response => {
-                console.log(response)
-                response.find((userObj) => {
-                   
-                    if ( emailInput.value === userObj.email) {
-                        console.log("reading if there is a match")
-                        alert("email registered")
-                        this.clearRegistrationFields();
-                        return true;
-                    }
-                })
-
-            })
-
-    },
-
     //new registration form
     registrationFormValidator () {
         const emailInput = document.querySelector("#newEmail");
@@ -156,6 +114,8 @@ const userRegistration = {
         }
         //adding click event to register button
         registerButton.addEventListener("click", clickEvent => {
+            let findRegisteredEmail;
+            const emailInput = document.querySelector("#newEmail");
             
               //if password input does not match confirm password input alert user
             if (passwordInput.value !== confirmPasswordInput.value) {
@@ -166,18 +126,22 @@ const userRegistration = {
                     registerButton.disabled = true
                     //???browser has built in email validator what does reg expression in html5 check for????
                     //???will alert user if email not valid ie no @ symbol????
+                } else if (API.getUserLogin()
+                .then(userObj => {
+                    findRegisteredEmail = userObj.find(user => {
+                       return emailInput.value === user.email    
+                    })        
+                })
+                ) {
+                    alert("Email already exists")
+                    emailInput.style.borderColor = "#E34234";
+                    this.clearRegistrationFields();
+                    registerButton.disabled = true;
                 } else if (emailInput.checkValidity() === false) {
                     alert("Not a valid email address")
                     emailInput.style.backgroundColor = "#E34234"
                     document.querySelector("#newEmail").value = "";
-                    //checking to see if email alrady exists in database
-                }  
-                // else if (this.registeredEmailValidator()) {
-                //     console.log("reading if there is a match")
-                //     alert("email registered")
-                //         this.clearRegistrationFields();
-                // } 
-                else {
+                } else {
                      //***need to display main dashboard****
                      passwordInput.style.borderColor = ""
                      confirmPasswordInput.style.borderColor = ""
@@ -191,7 +155,7 @@ const userRegistration = {
                              if (emailInput.value === userObj.email) {
                              sessionStorage.setItem("newUser", userObj.id)
                              console.log("stored userId:", sessionStorage.getItem("newUser"))
- 
+
                              }
                              
                          })
@@ -201,22 +165,8 @@ const userRegistration = {
                     }
                  
                 })
-                    
-               
                 
-              
-             
-           
-            
-                
-        
-            
-      
-    
-    
-}      
-            
-            
+            }          
        
 }
 
