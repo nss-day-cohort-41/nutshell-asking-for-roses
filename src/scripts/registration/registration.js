@@ -7,8 +7,8 @@ const userRegistration = {
 
         const emailLogin = document.querySelector("#loginEmail")
         const passwordLogin = document.querySelector("#loginPassword")
-        const signInButton = document.querySelector(".signInButton")
-        const loginInputFields = document.getElementsByClassName("login")
+        const signInButton = document.querySelector("#signInButton")
+        const loginInputFields = document.getElementsByClassName("login__input")
         //loop through class names for inputs and not allowing sign-in button to be clicked until all fields are filled out
         for (let i = 0; i < loginInputFields.length; i++) {
             loginInputFields[i].addEventListener("input", event => {
@@ -66,12 +66,12 @@ const userRegistration = {
     clickRegistrationLink() {
         //make section class="registrationForm" initially hidden
         const hiddenRegistrationForm = document.querySelector(".registrationForm")
-        hiddenRegistrationForm.style.visibility = "hidden";
+        // hiddenRegistrationForm.style.visibility = "hidden";
         //target anchor tag
         const registrationLink = document.querySelector(".registerLink");
         //add click event listener to anchor tag and after clicked display registration form
         registrationLink.addEventListener("click", clickEvent => {
-            hiddenRegistrationForm.style.visibility = "visible";
+            hiddenRegistrationForm.classList.toggle("hidden");
         })
     },
 

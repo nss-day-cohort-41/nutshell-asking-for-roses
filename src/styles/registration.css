@@ -18,6 +18,10 @@ footer {
     font-size: .7rem;
 }
 
+form {
+    width: 100%;
+}
+
 #container {
     background-color: var(--white);
     display: flex;
@@ -29,7 +33,13 @@ footer {
 
 .welcome {
     height: 400px;
+}
+
+.blueline {
     border-bottom: 3px solid var(--med-blue);
+    width: 90%;
+    margin: 0 auto;
+
 }
 
 .login__options {
@@ -68,7 +78,7 @@ footer {
     color: var(--med-blue);
 }
 
-.login__button {
+.frontPage__button {
     background-color: var(--med-blue);
     color: var(--white);
     width: 140px;
@@ -79,10 +89,13 @@ footer {
     margin: .5rem auto;
     font-family: "Noto Sans JP",
         sans-serif;
-
 }
 
-.login__button:hover {
+.frontPage__button:disabled {
+    background-color: var(--light-blue);
+}
+
+.frontPage__button:hover:enabled {
     background-color: var(--purple);
 }
 
@@ -96,7 +109,7 @@ footer {
     padding: 1rem 0 2rem;
 }
 
-.registrationForm__input {
+.registration {
     display: block;
     width: 40%;
     margin: 1.5rem auto;
@@ -106,7 +119,7 @@ footer {
     padding: .3rem;
 }
 
-.registrationForm__input::placeholder {
+.registration::placeholder {
     color: var(--med-blue);
 }
 
