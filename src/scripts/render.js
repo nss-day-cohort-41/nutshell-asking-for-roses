@@ -116,4 +116,5 @@ const renderToDom = {
 
     }
 }
+
 export default renderToDom
