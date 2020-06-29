@@ -15,10 +15,12 @@ const userRegistration = {
             loginInputFields[i].addEventListener("input", event => {
                 if (emailLogin.value.length !== 0 && passwordLogin.value.length !== 0) {
                     signInButton.disabled = false;
+                } else if (emailLogin.value.length === 0 || passwordLogin.value.length === 0) {
+                    signInButton.disabled = true;
                 }
             })
         }
-        //click event on registered user login button to find matching email in user database and saving that in session storage 
+        //click event on registered user login button 
         signInButton.addEventListener("click", clickEvent => {
             //GET user database info, perform userObj.find() to find match for user email input 
             let findPassword;
@@ -30,11 +32,13 @@ const userRegistration = {
                 
                
                 })
+                //GET user database info, perform userObj.find() to match password input
             API.getUserLogin()
                 .then(userObj => {
                     const findEmail = userObj.find(user => {
                        return emailLogin.value === user.email 
                     })
+                    //if mail and password both match, session storage enabled and should show main dashboard
                     if (findEmail && findPassword) {
                         sessionStorage.setItem("registeredUser", findEmail.id)
                         this.clearLoginFields();
@@ -42,12 +46,14 @@ const userRegistration = {
                         passwordLogin.style.borderColor = ""
                         console.log("stored email:", sessionStorage.getItem("registeredUser"))
                           //***need to display main dashboard****
+                          //if email not found, alert user
                     }  else if (!findEmail) {
                             alert("Your email address does not match existing user");
                             emailLogin.style.borderColor = "#E34234";
                             this.clearLoginFields();
                             signInButton.disabled = true;
                         }
+                        //else if password not found, alert user
                         else if(!findPassword) {
                             alert("Incorrect password");
                             passwordLogin.style.borderColor = "#E34234";
@@ -62,7 +68,7 @@ const userRegistration = {
                
     },
 
-    //adding click event on new registration hyperlink then displaying our hidden registration form
+    
     clickRegistrationLink () {
         //make section class="registrationForm" initially hidden
         const hiddenRegistrationForm = document.querySelector(".registrationForm")
@@ -93,6 +99,8 @@ const userRegistration = {
         document.querySelector("#confirmPassword").value = "";
     },
 
+/* START OF NEW REGISTRATION FORM CODE */
+
     //new registration form
     registrationFormValidator () {
         const emailInput = document.querySelector("#newEmail");
@@ -115,6 +123,7 @@ const userRegistration = {
         //adding click event to register button
         registerButton.addEventListener("click", clickEvent => {
             let findRegisteredEmail;
+            //email input field targeted
             const emailInput = document.querySelector("#newEmail");
             
               //if password input does not match confirm password input alert user
@@ -124,8 +133,7 @@ const userRegistration = {
                     confirmPasswordInput.style.borderColor = "#E34234"
                     this.clearPasswordFields();
                     registerButton.disabled = true
-                    //???browser has built in email validator what does reg expression in html5 check for????
-                    //???will alert user if email not valid ie no @ symbol????
+                    //checking to see if email has already been registered in database
                 } else if (API.getUserLogin()
                 .then(userObj => {
                     findRegisteredEmail = userObj.find(user => {
@@ -137,12 +145,15 @@ const userRegistration = {
                     emailInput.style.borderColor = "#E34234";
                     this.clearRegistrationFields();
                     registerButton.disabled = true;
+                    //???browser has built in email validator what does reg expression in html5 check for????
+                    //???will alert user if email not valid ie no @ symbol????
                 } else if (emailInput.checkValidity() === false) {
                     alert("Not a valid email address")
                     emailInput.style.backgroundColor = "#E34234"
                     document.querySelector("#newEmail").value = "";
+                    //if everything is filled out correctly... display main page
                 } else {
-                     //***need to display main dashboard****
+                     //***need to display main dashboard**** (may not need the border color change)
                      passwordInput.style.borderColor = ""
                      confirmPasswordInput.style.borderColor = ""
                     //if everything is correct, use created user object and POST, then store that response into session storage
