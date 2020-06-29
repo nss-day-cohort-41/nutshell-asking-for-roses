@@ -90,7 +90,7 @@ const renderToDom = {
         })
     },
 
-    articlesList(articlesArray) {
+    articlesList() {
         // **TEST DATA - delete later
         const articlesArray = [{
             name: "test1",
