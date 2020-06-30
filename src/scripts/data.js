@@ -112,7 +112,17 @@ const API = {
             body: JSON.stringify(messagesObject),
         
         });
+    },
+
+    // Sisi (delete for task)
+    deleteTaskEntry (taskEntryId) {
+        return fetch(`http://localhost:8808/tasks/${taskEntryId}`, {
+            method: "DELETE"
+        })
+        .then(response => response. json())
     }
 
 }
 export default API
+
+

@@ -2,9 +2,8 @@ import API from './data.js'
 import userRegistration from './registration/registration.js'
 import renderToDom from "./render.js"
 import forms from './forms/allForms.js';
+import deleteTaskFunction from '../tasks/taskButtons.js';
 
-//you added this for fetch calling tasks (delete if not working)
-API.fetchUsers("http://localhost:8088/tasks").then(() => renderToDom.tasksList(API.userTaskArray))
 
 userRegistration.clickRegistrationLink();
 userRegistration.registrationFormValidator();
@@ -20,9 +19,10 @@ renderToDom.eventsList()
 // forms.renderingEventForm();
 // forms.renderingArticleForm();
 
-
-
 renderToDom.articlesList()
+
+//invoke delete functionality for task buttons
+deleteTaskFunction();
 
 
 const registrationContainer= document.querySelector("#registrationContainer")
@@ -31,7 +31,7 @@ const hiddenDashboard = document.querySelector("#dashboardContainer")
   
 //place in main js
    //user requested to log out, reset DOM to registration page
-   //STILL REQUIRED clear user session from browser.
+   //***STILL REQUIRED clear user session from browser.***
 const userLogOutRequest = document.querySelector(".logOutButton")
 userLogOutRequest.addEventListener("click", event => { 
     hiddenDashboard.style.display = "none"

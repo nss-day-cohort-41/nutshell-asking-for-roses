@@ -6,11 +6,20 @@ const domObject = {
     messageComponent(messageObject) {
         
     },
-    
+   
     taskComponent(taskObject) {
         const taskHTMLRepresentation = `
-        <p class ="tasksList__Items__Input">${taskObject.name}</p>
-        <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
+        <section class="tasksList__Item">
+                    <div class="tasksList__Item__Content">
+                        <input type="checkbox" id="tasksListCompletedCheckbox">
+                        <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
+                        <p class="tasksList__Item__Input">${taskObject.name}e</p>
+                    </div>
+                        
+                    <div>
+                        <button type="button" class="tasksDeleteButton--${taskObject.id}">Delete Task Button</button>
+                    </div>
+        </section>
         `
         return taskHTMLRepresentation
     },
