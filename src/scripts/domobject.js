@@ -4,7 +4,7 @@ Outline by David Larsen */
 
 const domObject = {
     messageComponent(messageObject) {
-
+        return `<section class=message__object"`
     },
     
     taskComponent(taskObject) {
