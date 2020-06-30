@@ -9,10 +9,11 @@ const domObject = {
     },
     
     taskComponent(taskObject) {
-        `<div>Task: ${taskObject.name}</div>
+        const taskHTMLRepresentation = `
+        <div>Task: ${taskObject.name}</div>
         <div>Complete by: ${taskObject.dueDate}</div>
         `
-
+        return taskHTMLRepresentation
     },
 
     eventComponent(eventObject) {

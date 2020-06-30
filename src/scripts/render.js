@@ -31,38 +31,24 @@ const renderToDom = {
         })
     },
 
-    tasksList() {
+    //Sisi (tasks)
+
+    tasksList(taskArray) {
         // trial code -- delete if not working
-        for (const taskObj of API.userTaskArray) {
+        for (const taskObj of taskArray) {
             const taskHTML = domObject.taskComponent(taskObj)
-            const taskElement = document.querySelector(".loginHere")
+            const taskElement = document.querySelector(".try")
             taskElement.innerHTML += taskHTML
+            
         }
         
-        // // **TEST DATA - delete later
-        // const tasksArray = [{
-        //     name: "test1",
-        //     dueDate: "2020-06-05",
-        //     completed: false
-        // }, {
-        //     name: "test2",
-        //     dueDate: "2020-05-04",
-        //     completed: true
-        // }, {
-        //     name: "test3",
-        //     dueDate: "2020-06-21",
-        //     completed: false
-        // }]
-        // // **
-
+        
         // // Separate and sort with completed items at the top of the list, then sorted in order by due date
         // const completeTasks = tasksArray.filter(task => {return task.completed === true})
-        // const incompleteTasks = tasksArray.filter(task => {return task.completed === false})
+       
 
-        // completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
         // incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
 
-        // console.log(completeTasks) // Remove this line later
         // console.log(incompleteTasks) // Remove this line later
         // completeTasks.forEach(task => {
         //     const taskHTML = domObject.taskComponent(task)
@@ -75,6 +61,7 @@ const renderToDom = {
 
 
     },
+    //end Sisi (tasks)
 
     eventsList() {
         // **TEST DATA - delete later

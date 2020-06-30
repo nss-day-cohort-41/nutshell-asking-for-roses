@@ -23,23 +23,20 @@ const API = {
             body: JSON.stringify(userObj)
         })
     },
-    //entered trial code (delete if not working!)
+    //entered trial code for async/await (delete below if not working!)
     userTaskArray: [],
+    
     async fetchUsers(endpoint) {
     const res = await fetch(endpoint);
     let data = await res.json();
   
     // data = data.map(user => user.username);
-    userTaskArray = data
+    this.userTaskArray = data
   
-    console.log(userTaskArray);
   },
 //   end trial code
   
   
-
-
-
     // Tasha Lane created API fetch calls
 
 
@@ -52,10 +49,10 @@ const API = {
             .then(events => events.json())
     },
 
-    getTasksData: () => {
-        return fetch("http://localhost:8088/tasks")
-            .then(tasks => tasks.json())
-    },
+    // getTasksData: () => {
+    //     return fetch("http://localhost:8088/tasks")
+    //         .then(tasks => tasks.json())
+    // },
     getFriendsData: () => {
         return fetch("http://localhost:8088/friends")
             .then(friends => friends.json())
