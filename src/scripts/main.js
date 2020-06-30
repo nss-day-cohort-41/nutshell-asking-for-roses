@@ -2,7 +2,7 @@ import API from './data.js'
 import userRegistration from './registration/registration.js'
 import renderToDom from "./render.js"
 import forms from './forms/allForms.js';
-import deleteTaskFunction from '../tasks/taskButtons.js';
+import taskFunctions from '../tasks/taskButtons.js';
 
 
 userRegistration.clickRegistrationLink();
@@ -21,8 +21,7 @@ renderToDom.eventsList()
 
 renderToDom.articlesList()
 
-//invoke delete functionality for task buttons
-deleteTaskFunction();
+
 
 
 const registrationContainer= document.querySelector("#registrationContainer")
@@ -39,3 +38,6 @@ userLogOutRequest.addEventListener("click", event => {
 
     
 })
+
+//invoke delete functionality for task buttons
+taskFunctions.deleteTask();
