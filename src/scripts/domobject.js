@@ -4,11 +4,11 @@ Outline by David Larsen */
 
 const domObject = {
     messageComponent(messageObject) {
-
+        
     },
     
     taskComponent(taskObject) {
-
+        
     },
 
     eventComponent(eventObject) {
