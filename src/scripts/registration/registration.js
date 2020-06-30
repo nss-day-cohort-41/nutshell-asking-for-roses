@@ -1,5 +1,6 @@
 import API from '../data.js'
 import createUserObject from './createUser.js'
+import renderToDom from "../render.js"
 
 const userRegistration = {
     //registered user login 
@@ -48,6 +49,7 @@ const userRegistration = {
                         //***need to display main dashboard****
                         registrationContainer.style.display = "none"
                         hiddenDashboard.style.display = "block"
+                        API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
                         //if email not found, alert user
                     } else if (!findEmail) {
                         alert("Your email address does not match existing user");
@@ -171,6 +173,7 @@ const userRegistration = {
                             registerButton.disabled = true;
                             hiddenDashboard.style.display = "block"
                             registrationContainer.style.display = "none"
+                            API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
                         })
                     }
                 })

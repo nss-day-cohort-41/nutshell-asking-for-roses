@@ -5,12 +5,14 @@ Outline by David Larsen */
 const domObject = {
     // Message Component by David Larsen
     messageComponent(messageObject) {
-        const editButtonHTML = ""
+        let editButtonHTML = ""
         
-        if (messageObject.userId === sessionStorage.getItem("currentUser")) {
+        // Apply edit button HTML only to the current user's messages
+        if (messageObject.userId === parseInt(sessionStorage.getItem("currentUser"))) {
             editButtonHTML = `<button type="button" id="editMessage--${messageObject.id} class="dashboardButton">Edit</button>`
         } 
         
+        // HTML to be rendered to the DOM
         return `<section class=messageList__item">
         <span class="List__Item__Input">
         <p><strong><a class ="messagesList__Item__User" href="#friendsRequestAlert">${messageObject.user.username}</a></strong>--${messageObject.message}</p>
