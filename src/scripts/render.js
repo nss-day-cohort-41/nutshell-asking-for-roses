@@ -26,7 +26,7 @@ const renderToDom = {
         console.log(messagesArray) // Remove this line later
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            document.querySelector(".messagesList").innerHTML += messageHTML
+            //document.querySelector(".messagesList").innerHTML += messageHTML
         })
     },
 
