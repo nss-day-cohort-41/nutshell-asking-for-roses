@@ -10,3 +10,20 @@ userRegistration.registeredUserLogin();
 renderToDom.messagesList()
 renderToDom.tasksList()
 renderToDom.eventsList()
+renderToDom.articlesList()
+
+
+const registrationContainer= document.querySelector("#registrationContainer")
+const hiddenDashboard = document.querySelector("#dashboardContainer")
+   hiddenDashboard.style.display = "none"
+  
+//place in main js
+   //user requested to log out, reset DOM to registration page
+   //STILL REQUIRED clear user session from browser.
+const userLogOutRequest = document.querySelector(".logOutButton")
+userLogOutRequest.addEventListener("click", event => { 
+    hiddenDashboard.style.display = "none"
+    registrationContainer.style.display = "block"
+
+    
+})
