@@ -29,8 +29,8 @@ const forms = {
     }
     return articleFormObject
     },
-
-//adding event listeners to save and cancel buttons on each task, event, and article pop-up forms
+    
+   //adding event listeners to save and cancel buttons on each task, event, and article pop-up forms
     renderingTaskForm() {
         //target save new task button to save to database, retrieve, and display on DOM
         const saveNewTaskButton = document.querySelector(".submitNewTask")
@@ -87,6 +87,7 @@ const forms = {
             //make new article popup window disappear
         })
     }
+
     
 }
 

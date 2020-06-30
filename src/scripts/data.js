@@ -23,6 +23,20 @@ const API = {
             body: JSON.stringify(userObj)
         })
     },
+    //entered trial code (delete if not working!)
+    userTaskArray: [],
+    async fetchUsers(endpoint) {
+    const res = await fetch(endpoint);
+    let data = await res.json();
+  
+    // data = data.map(user => user.username);
+    userTaskArray = data
+  
+    console.log(userTaskArray);
+  },
+//   end trial code
+  
+  
 
 
 

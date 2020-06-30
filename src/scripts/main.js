@@ -12,6 +12,9 @@ renderToDom.messagesList()
 renderToDom.tasksList()
 renderToDom.eventsList()
 
-forms.renderingTaskForm();
-forms.renderingEventForm();
-forms.renderingArticleForm();
+// forms.renderingTaskForm();
+// forms.renderingEventForm();
+// forms.renderingArticleForm();
+
+
+

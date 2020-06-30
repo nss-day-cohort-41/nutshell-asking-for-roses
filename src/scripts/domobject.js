@@ -3,13 +3,13 @@
 Outline by David Larsen */ 
 
 const domObject = {
-    messageComponent(messageObject) { //????
-        `<div>@${user.username} : ${messageObject.message}</div>`
+    messageComponent(messageObject) { //???? would we have to pass in userobject?
+        // `<div>@${userObject.username} : ${messageObject.message}</div>`
         
     },
     
     taskComponent(taskObject) {
-        `<div>Task: ${taskObject.task}</div>
+        `<div>Task: ${taskObject.name}</div>
         <div>Complete by: ${taskObject.dueDate}</div>
         `
 
@@ -18,13 +18,18 @@ const domObject = {
     eventComponent(eventObject) {
         `<div>${eventObject.name}</div>
         <div>${eventObject.date}</div>
-        <div>${evenObject.location}</div>`
+        <div>${eventObject.location}</div>`
 
     },
 
-    articleComponent(articleObject) {
-        `<div>${articleObject}</div>
-        <div></div>`
+    articleComponent(articleObject) { //would we have to pass in userobject?
+    // ------
+        `<div>${articleObject.date}</div>
+        ${articleObject.name}
+        ${articleObject.synopsis}
+        ${articleObject.url}
+        `
+        
 
     },
 
@@ -34,9 +39,3 @@ const domObject = {
 }
 
 export default domObject
-const parkPreviewHTMLRep = `
-             
-            <div class="Preview__Displayed">${parkPreviewObject.name}</div>
-        
-    `
-    return parkPreviewHTMLRep
