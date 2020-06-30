@@ -126,26 +126,27 @@ const userRegistration = {
                 this.clearPasswordFields();
                 registerButton.disabled = true
                 //checking to see if email has already been registered in database
-            }
-            API.getUserLogin()
+            } else {
+
+                API.getUserLogin()
                 .then(userObj => {
                     findRegisteredEmail = userObj.find(user => {
                         return emailInput.value === user.email
                     })
-
+                    
                     if (findRegisteredEmail) {
                         alert("Email already exists")
                         emailInput.style.borderColor = "#E34234";
                         this.clearRegistrationFields();
                         registerButton.disabled = true;
                     }
-
+                    
                     //checking validity of email
                     else if (emailInput.checkValidity() === false) {
                         alert("Not a valid email address")
                         emailInput.style.borderColor= "#E34234"
                         document.querySelector("#newEmail").value = "";
-                    //if everything is filled out correctly... display main page
+                        //if everything is filled out correctly... display main page
                     } else {
                         //***need to display main dashboard**** (may not need the border color change)
                         passwordInput.style.borderColor = ""
@@ -153,22 +154,23 @@ const userRegistration = {
                         //if everything is correct, use created user object and POST, then store that response into session storage
                         const userObjectGenerator = createUserObject(emailInput.value, userNameInput.value, passwordInput.value);
                         API.saveUserLogin(userObjectGenerator)
-                            .then(() => API.getUserLogin()
-                            ).then(userObj => {
-                                const findNewEmail = userObj.find(user => {
-                                    return emailInput.value === user.email
-                                })
-                                sessionStorage.setItem("currentUser", findNewEmail.id)
-                                console.log("stored userId:", sessionStorage.getItem("currentUser"))
-                                this.clearRegistrationFields();
-                                registerButton.disabled = true;
+                        .then(() => API.getUserLogin()
+                        ).then(userObj => {
+                            const findNewEmail = userObj.find(user => {
+                                return emailInput.value === user.email
                             })
+                            sessionStorage.setItem("currentUser", findNewEmail.id)
+                            console.log("stored userId:", sessionStorage.getItem("currentUser"))
+                            this.clearRegistrationFields();
+                            registerButton.disabled = true;
+                        })
                     }
                 })
+            }
         })
-
+            
     }
-
+        
 }
 
 
