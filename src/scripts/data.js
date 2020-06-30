@@ -39,7 +39,6 @@ const API = {
   
     // Tasha Lane created API fetch calls
 
-
     getArticlesData: () => {
         return fetch("http://localhost:8088/articles")
             .then(articles => articles.json())
@@ -59,7 +58,7 @@ const API = {
     },
 
     getMessagesData: () => {
-        return fetch("http://localhost:8088/messages")
+        return fetch("http://localhost:8088/messages?_expand=user")
             .then(messages => messages.json())
     },
 
