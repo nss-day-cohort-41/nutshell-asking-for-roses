@@ -11,7 +11,7 @@ const userRegistration = {
         const loginInputFields = document.getElementsByClassName("login__input")
         const registrationContainer= document.querySelector("#registrationContainer")
         const hiddenDashboard = document.querySelector("#dashboardContainer")
-        hiddenDashboard.style.display = "none"
+        //hiddenDashboard.style.display = "none"
         //loop through class names for inputs and not allowing sign-in button to be clicked until all fields are filled out
         for (let i = 0; i < loginInputFields.length; i++) {
             loginInputFields[i].addEventListener("input", event => {
@@ -111,7 +111,7 @@ const userRegistration = {
         //
         const registrationContainer= document.querySelector("#registrationContainer")
         const hiddenDashboard = document.querySelector("#dashboardContainer")
-        hiddenDashboard.style.display = "none"
+        // hiddenDashboard.style.display = "none"
         //looping through class names to target every input field and allowing register button to be clicked only if all fields filled out
         for (let i = 0; i < registerInput.length; i++) {
             registerInput[i].addEventListener("input", event => {
