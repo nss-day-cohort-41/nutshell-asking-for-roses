@@ -3,8 +3,7 @@
 Outline by David Larsen */ 
 
 const domObject = {
-    messageComponent(messageObject) { //???? would we have to pass in userobject?
-        // `<div>@${userObject.username} : ${messageObject.message}</div>`
+    messageComponent(messageObject) {
         
     },
     
@@ -17,19 +16,12 @@ const domObject = {
     },
 
     eventComponent(eventObject) {
-        `<div>${eventObject.name}</div>
-        <div>${eventObject.date}</div>
-        <div>${eventObject.location}</div>`
+        
 
     },
 
-    articleComponent(articleObject) { //would we have to pass in userobject?
-    // ------
-        `<div>${articleObject.date}</div>
-        ${articleObject.name}
-        ${articleObject.synopsis}
-        ${articleObject.url}
-        `
+    articleComponent(articleObject) { 
+
         
 
     },
