@@ -7,7 +7,6 @@ userRegistration.registrationFormValidator();
 userRegistration.registeredUserLogin();
 
 
-renderToDom.messagesList()
 renderToDom.tasksList()
 renderToDom.eventsList()
 renderToDom.articlesList()
@@ -15,8 +14,9 @@ renderToDom.articlesList()
 
 const registrationContainer= document.querySelector("#registrationContainer")
 const hiddenDashboard = document.querySelector("#dashboardContainer")
-   hiddenDashboard.style.display = "none"
-  
+     hiddenDashboard.style.display = "none"
+    API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
+
 //place in main js
    //user requested to log out, reset DOM to registration page
    //STILL REQUIRED clear user session from browser.
