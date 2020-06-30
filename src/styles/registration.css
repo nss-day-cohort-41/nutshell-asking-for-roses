@@ -32,7 +32,14 @@ form {
 }
 
 .welcome {
-    height: 400px;
+    width: 100%;
+    padding: 0;
+}
+
+.login__logo {
+    width: 50%;
+    max-width: 500px;
+    margin: 0 auto 1em;
 }
 
 .blueline {
@@ -80,7 +87,7 @@ form {
 
 .frontPage__button {
     background-color: var(--med-blue);
-    color: var(--white);
+    color: black;
     width: 140px;
     height: 40px;
     border: none;
@@ -93,10 +100,12 @@ form {
 
 .frontPage__button:disabled {
     background-color: var(--light-blue);
+    color: gray;
 }
 
 .frontPage__button:hover:enabled {
     background-color: var(--purple);
+    color: var(--white);
 }
 
 .registerLink {
