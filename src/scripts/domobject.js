@@ -20,10 +20,10 @@ const domObject = {
         `
             <section class="articlesList__Item">
                 <div class="articlesList__Item__Content">
-                    <p>News Title ${articlesObject.title}</p>
-                    <p>Synopsis ${articlesObject.synopsis}</p>
-                    <a href="${articlesObject.url}">Full Story</a>
-                    <p>Submitted on:${articlesObject.dateOfNews} </p>
+                    <p>News Title: ${articleObject.title}</p>
+                    <p>Synopsis: ${articleObject.synopsis}</p>
+                    <a href="${articleObject.url}">Full Story</a>
+                    <p>Submitted: on:${articleObject.dateOfNews} </p>
                 </div>
                 <div>
                     <button type="button" class="articlesDeleteButton">Delete Article Button</button>

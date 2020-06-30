@@ -10,6 +10,7 @@ userRegistration.registeredUserLogin();
 renderToDom.messagesList()
 renderToDom.tasksList()
 renderToDom.eventsList()
+renderToDom.articlesList()
 
 
 const registrationContainer= document.querySelector("#registrationContainer")
