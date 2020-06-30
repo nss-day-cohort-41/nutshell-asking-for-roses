@@ -23,7 +23,7 @@ const renderToDom = {
 
         // Sort list of messages by date and render each message to the DOM
         messagesArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
-        console.log(messagesArray) // Remove this line later
+        console.log(messagesArray)
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
             // document.querySelector(".messagesList").innerHTML += messageHTML
