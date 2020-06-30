@@ -12,8 +12,9 @@ const domObject = {
     },
 
     eventComponent(eventObject) {
-
-    },
+        
+        
+    },       
 
     articleComponent(articleObject) {
 

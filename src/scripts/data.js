@@ -52,7 +52,7 @@ const API = {
             .then(messages => messages.json())
     },
 
-//Tasha Lane created POST methods for each resource
+//Tasha Lane created POST methods for each resource object
     newArticlesEntry: (articlesObject) => {
         return fetch("http://localhost:8808/articles", {
             method: "POST",
