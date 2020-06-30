@@ -46,8 +46,8 @@ const userRegistration = {
                         passwordLogin.style.borderColor = ""
                         console.log("stored user:", sessionStorage.getItem("currentUser"))
                         //***need to display main dashboard****
-                        registrationContainer.style.display = "none"
-                        hiddenDashboard.style.display = "block"
+                        registrationContainer.classList.toggle("hidden")
+                        hiddenDashboard.classList.toggle("hidden");
                         //if email not found, alert user
                     } else if (!findEmail) {
                         alert("Your email address does not match existing user");
@@ -169,8 +169,8 @@ const userRegistration = {
                             console.log("stored userId:", sessionStorage.getItem("currentUser"))
                             this.clearRegistrationFields();
                             registerButton.disabled = true;
-                            hiddenDashboard.style.display = "block"
-                            registrationContainer.style.display = "none"
+                            hiddenDashboard.classList.toggle("hidden");
+                            registrationContainer.classList.toggle("hidden")
                         })
                     }
                 })

@@ -26,7 +26,7 @@ const domObject = {
                     <p>Submitted: on:${articleObject.dateOfNews} </p>
                 </div>
                 <div>
-                    <button type="button" class="articlesDeleteButton">Delete Article Button</button>
+                    <button type="button" class="articlesDeleteButton--${articleObject.id}">Delete Article Button</button>
                 </div>    
             </section>
         `

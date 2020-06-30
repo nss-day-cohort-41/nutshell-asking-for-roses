@@ -1,4 +1,5 @@
 import domObject from "./domobject.js"
+import API from "./data.js"
 
 /* Object which renders data to each section of the Dashboard
 
@@ -71,15 +72,19 @@ const renderToDom = {
     eventsList() {
         // **TEST DATA - delete later
         const eventsArray = [{
-            name: "test1",
-            date: "2020-06-05"
-        }, {
-            name: "test2",
-            date: "2020-05-04"
-        }, {
-            name: "test3",
-            date: "2020-06-21"
-        }]
+            "id": 1,
+            "userId": 1,
+            "name": "first event ever ",
+            "location": "nextEvents section",
+            "eventDate": "01/01/01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "name": "2nd event to ever take place ",
+            "location": "1st event in the events list",
+            "eventDate": "02/02/02"
+          }]
         // **
 
         eventsArray.sort((event1, event2) => new Date(event2.date) - new Date(event1.date))
@@ -120,11 +125,13 @@ const renderToDom = {
             ]
         // **
 
-        articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
-        console.log(articlesArray) // Remove this line later
-        articlesArray.forEach(article => {
+        API.getArticlesData().then((articlesArray) => {
+            let sortedArticles= articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
+            console.log(article1) // Remove this line later
+            sortedArticles.forEach(article => {
             const articleHTML = domObject.articleComponent(article)
             document.querySelector(".articlesList").innerHTML += articleHTML
+            })
         })
     },
 
