@@ -9,6 +9,10 @@ const userRegistration = {
         const passwordLogin = document.querySelector("#loginPassword")
         const signInButton = document.querySelector(".signInButton")
         const loginInputFields = document.getElementsByClassName("login")
+        //
+        const registrationContainer= document.querySelector("#registrationContainer")
+        const hiddenDashboard = document.querySelector("#dashboardContainer")
+        hiddenDashboard.style.display = "none"
         //loop through class names for inputs and not allowing sign-in button to be clicked until all fields are filled out
         for (let i = 0; i < loginInputFields.length; i++) {
             loginInputFields[i].addEventListener("input", event => {
@@ -43,6 +47,8 @@ const userRegistration = {
                         passwordLogin.style.borderColor = ""
                         console.log("stored user:", sessionStorage.getItem("currentUser"))
                         //***need to display main dashboard****
+                        registrationContainer.style.display = "none"
+                        hiddenDashboard.style.display = "block"
                         //if email not found, alert user
                     } else if (!findEmail) {
                         alert("Your email address does not match existing user");
@@ -103,6 +109,10 @@ const userRegistration = {
         const confirmPasswordInput = document.querySelector("#confirmPassword")
         const registerButton = document.querySelector(".registerButton")
         const registerInput = document.getElementsByClassName("registration")
+        //
+        const registrationContainer= document.querySelector("#registrationContainer")
+        const hiddenDashboard = document.querySelector("#dashboardContainer")
+        hiddenDashboard.style.display = "none"
         //looping through class names to target every input field and allowing register button to be clicked only if all fields filled out
         for (let i = 0; i < registerInput.length; i++) {
             registerInput[i].addEventListener("input", event => {
@@ -162,6 +172,8 @@ const userRegistration = {
                                 console.log("stored userId:", sessionStorage.getItem("currentUser"))
                                 this.clearRegistrationFields();
                                 registerButton.disabled = true;
+                                registrationContainer.style.display = "none"
+                                hiddenDashboard.style.display = "block"
                             })
                     }
                 })
@@ -173,3 +185,18 @@ const userRegistration = {
 
 
 export default userRegistration
+
+// const registrationContainer= document.querySelector("#registrationContainer")
+// const hiddenDashboard = document.querySelector("#dashboardContainer")
+//    hiddenDashboard.style.display = "none"
+   
+//    // place in registation click events final else statement
+//    //registration completed and reseting DOM to display dashboard
+//    //STILL REQUIRED populate dashboard list elements with user data.
+// const userLoginSuccessful = document.querySelector(".registerButton")
+// userLoginSuccessful.addEventListener("click", event => { 
+//     registrationContainer.style.display = "none"
+//     hiddenDashboard.style.display = "block"
+
+  
+// })
