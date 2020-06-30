@@ -11,7 +11,7 @@ const userRegistration = {
         const loginInputFields = document.getElementsByClassName("login__input")
         const registrationContainer= document.querySelector("#registrationContainer")
         const hiddenDashboard = document.querySelector("#dashboardContainer")
-        //hiddenDashboard.style.display = "none"
+       
         //loop through class names for inputs and not allowing sign-in button to be clicked until all fields are filled out
         for (let i = 0; i < loginInputFields.length; i++) {
             loginInputFields[i].addEventListener("input", event => {
@@ -71,7 +71,6 @@ const userRegistration = {
     clickRegistrationLink() {
         //make section class="registrationForm" initially hidden
         const hiddenRegistrationForm = document.querySelector(".registrationForm")
-        // hiddenRegistrationForm.style.visibility = "hidden";
         //target anchor tag
         const registrationLink = document.querySelector(".registerLink");
         //add click event listener to anchor tag and after clicked display registration form
@@ -108,10 +107,8 @@ const userRegistration = {
         const confirmPasswordInput = document.querySelector("#confirmPassword")
         const registerButton = document.querySelector(".registerButton")
         const registerInput = document.getElementsByClassName("registration")
-        //
         const registrationContainer= document.querySelector("#registrationContainer")
         const hiddenDashboard = document.querySelector("#dashboardContainer")
-        // hiddenDashboard.style.display = "none"
         //looping through class names to target every input field and allowing register button to be clicked only if all fields filled out
         for (let i = 0; i < registerInput.length; i++) {
             registerInput[i].addEventListener("input", event => {
@@ -186,18 +183,3 @@ const userRegistration = {
 
 
 export default userRegistration
-
-// const registrationContainer= document.querySelector("#registrationContainer")
-// const hiddenDashboard = document.querySelector("#dashboardContainer")
-//    hiddenDashboard.style.display = "none"
-   
-//    // place in registation click events final else statement
-//    //registration completed and reseting DOM to display dashboard
-//    //STILL REQUIRED populate dashboard list elements with user data.
-// const userLoginSuccessful = document.querySelector(".registerButton")
-// userLoginSuccessful.addEventListener("click", event => { 
-//     registrationContainer.style.display = "none"
-//     hiddenDashboard.style.display = "block"
-
-  
-// })
