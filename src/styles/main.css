@@ -1,0 +1,7 @@
+@import url("registration.css");
+
+body {
+    background-color: var(--gray);
+    font-family: "Noto Sans JP", sans-serif;
+}
+
