@@ -12,8 +12,8 @@ userRegistration.registeredUserLogin();
 
 
 renderToDom.messagesList()
-//you are changing this for task rendering (change back if not working)
-// API.getTasksData()
+//you are changing this for task rendering (change back to active if not working)
+// renderToDom.tasksList()
 renderToDom.eventsList()
 
 // forms.renderingTaskForm();

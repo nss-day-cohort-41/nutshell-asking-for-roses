@@ -9,8 +9,8 @@ const domObject = {
     
     taskComponent(taskObject) {
         const taskHTMLRepresentation = `
-        <div>Task: ${taskObject.name}</div>
-        <div>Complete by: ${taskObject.dueDate}</div>
+        <p class ="tasksList__Items__Input">${taskObject.name}</p>
+        <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
         `
         return taskHTMLRepresentation
     },
