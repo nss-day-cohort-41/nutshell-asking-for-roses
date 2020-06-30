@@ -12,6 +12,20 @@ const domObject = {
     },
 
     eventComponent(eventObject) {
+        const eventElement = `
+            <section class="eventsList__Item">
+                <div class="eventsList__Item__Content">
+                    <p>Events Name: ${eventObject.name}</p>
+                    <p>Location: ${eventObject.location}</p>
+                    <p>Date: on:${eventObject.eventDate} </p>
+                </div>
+                <div>
+                <button type="button" id="eventsDeleteButton--${eventObject.id}">Delete Event Button</button>
+                    
+                </div>    
+            </section>
+        `;
+        return eventElement;
         
         
     },       
