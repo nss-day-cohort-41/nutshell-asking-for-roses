@@ -26,7 +26,7 @@ const renderToDom = {
         console.log(messagesArray) // Remove this line later
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            // document.querySelector(".messagesList").innerHTML += messageHTML
+            //document.querySelector(".messagesList").innerHTML += messageHTML
         })
     },
 
@@ -92,23 +92,39 @@ const renderToDom = {
 
     articlesList() {
         // **TEST DATA - delete later
-        const articlesArray = [{
-            name: "test1",
-            date: "2020-06-05"
-        }, {
-            name: "test2",
-            date: "2020-05-04"
-        }, {
-            name: "test3",
-            date: "2020-06-21"
-        }]
+        const articlesArray = [
+            {
+                "id": 1,
+                "userId": 1,
+                "url": "www.google.com",
+                "title": "actionNews 1",
+                "synopsis": "Ron Tucker did this",
+                "dateOfNews": "01/01/01"
+              },
+              {
+                "id": 2,
+                "userId": 2,
+                "url": "www.google.com",
+                "title": "actionNews 2",
+                "synopsis": "Ron Burgendy is legend",
+                "dateOfNews": "02/02/02"
+              },
+              {
+                "id": 3,
+                "userId": 3,
+                "url": "www.google.com",
+                "title": "actionNews 3",
+                "synopsis": "Billy Madison ran over a penguin!!",
+                "dateOfNews": "03/03/03"
+              }
+            ]
         // **
 
         articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
         console.log(articlesArray) // Remove this line later
         articlesArray.forEach(article => {
             const articleHTML = domObject.articleComponent(article)
-            // document.querySelector(".articlesList").innerHTML += articleHTML
+            document.querySelector(".articlesList").innerHTML += articleHTML
         })
     },
 
