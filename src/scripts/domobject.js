@@ -37,6 +37,7 @@ const domObject = {
                 </div>
                 <div>
                 <button type="button" id="eventsDeleteButton--${eventObject.id}">Delete Event Button</button>
+                
                     
                 </div>    
             </section>

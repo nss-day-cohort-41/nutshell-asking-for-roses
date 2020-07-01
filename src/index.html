@@ -171,9 +171,7 @@
                             <button type="button" class="messagesSubmitButton">Submit Message</button>
                         </div>
                     </div>
-                    <!-- EVENTS LIST-->
-                    <article class="eventsList">
-                        <!-- EVENTS HEADING -->
+                    <!-- EVENTS HEADING -->
                         <div class="eventsList__Heading">
                             <H2> EVENTS LIST What to do?.. What to do?</H2>
                             <p>See all the other happenings you and your friends have planned</p>
@@ -182,11 +180,30 @@
                         <div>
                             <button type="button" class="eventsAddButton">Add Event Button</button>
                         </div>  
+                    <!-- EVENTS LIST-->
+                    <article class="eventsList">
+                        
                         <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                         <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
                         
                         
                     </article>
+                    <!-- Tasks Form will initially be hidden -->
+                <div class="newEventContainer popupForm hidden">
+                    <div class="showPopupContent">
+                    <form class="newEventForm">
+                        <label for="Name">Enter New Event</label>
+                        <input id="eventTitle" class="eventInput" type="text" required></input>
+                        <label for="Location">Location</label>
+                        <input id="eventLocation" class="locationInput" type="text" required></input>
+                        
+                        <label for="newEventDate">Schedule an Event Date</label>
+                        <input id="newEventScheduledDate" class="newDateInput" type="date" placeholder="Date Scheduled" required></input>
+                        <button id="submitEventTask" type="button">Save</button>
+                        <button id="cancelEventTask" type="button">Cancel</button>
+                    </form>
+                    </div>
+                </div>
                 </div>
             </div>
 

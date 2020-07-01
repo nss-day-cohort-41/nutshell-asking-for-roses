@@ -14,8 +14,9 @@ const loadDashboard = () => {
     
     // Load individual data components
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
+    
     renderToDom.tasksList()
-    renderToDom.eventsList()
+    API.getEventsData().then(eventsLog => renderToDom.eventsList(eventsLog))
     renderToDom.articlesList()
 
 }

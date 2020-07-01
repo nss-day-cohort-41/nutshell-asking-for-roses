@@ -107,34 +107,11 @@ const renderToDom = {
 
     },
 
-    eventsList() {
-        // **TEST DATA - delete later
-        const eventsArray = [
-            {
-                id: 1,
-                userId: 1,
-                name: "first event ever ",
-                location: "nextEvents section",
-                eventDate: "01/01/01",
-            },
-            {
-                id: 2,
-                userId: 2,
-                name: "2nd event to ever take place ",
-                location: "1st event in the events list",
-                eventDate: "02/02/02",
-            },
-            {
-                id: 3,
-                userId: 3,
-                name: "wow a third event!! ",
-                location: "2nd from the left? in events list",
-                eventDate: "03/03/03",
-            }
-        ];
-        // **
-
+    eventsList(eventsArray) {
+        
         eventsArray.sort((event1, event2) => new Date(event2.date) - new Date(event1.date))
+        //below resets the list
+        document.querySelector(".eventsList").innerHTML = "";
         console.log(eventsArray) // Remove this line later
         eventsArray.forEach(event => {
             const eventHTML = domObject.eventComponent(event)
@@ -146,29 +123,36 @@ const renderToDom = {
                 console.log("delete button clicked");
                 const eventsIdToDelete = event.target.id.split("--")[1];
                 console.log("delete id", eventsIdToDelete);
-                API.deleteEventsEntry(eventsIdToDelete);
+                API.deleteEventsEntry(eventsIdToDelete)
+                .then(API.getEventsData)
+                .then(eventsLog => renderToDom.eventsList(eventsLog))
+                
             }
         });
-
-        // Save new message
-
-        document.querySelector(".eventsSubmitButton").addEventListener("click", event => {
-            let eventsInput = document.getElementById("eventsUserInput").value
-            let eventsId = document.getElementById("eventsId").value
-            const eventsToSave = createEventObject(eventsInput)
-
-            // Check if events is new or edited
-            if (eventsId === "") {
-
-                API.newEventsEntry(eventsToSave)
-                    .then(() => API.getEventsData()
-                        .then(eventsLog => {
-                            // Clear the events blank and refresh events list
-                            eventsInput = ""
-                            renderToDom.eventsList(eventsLog)
-                        }))
-            }
+        const hiddenEventsForm = document.querySelector(".newEventContainer")
+        const addEventsButton = document.querySelector(".eventsAddButton");
+        addEventsButton.addEventListener("click", (clickEvent) => {
+        hiddenEventsForm.classList.toggle("hidden");
         })
+        // Save new events
+
+        // document.querySelector("#submitNewEvent").addEventListener("click", (event) => {
+        //     let eventsInput = document.getElementById("eventsUserInput").value
+        //     let eventsId = document.getElementById("eventsId").value
+        //     const eventsToSave = createEventObject(eventsInput)
+
+        //     // Check if events is new or edited
+        //     if (eventsId === "") {
+
+        //         API.newEventsEntry(eventsToSave)
+        //             .then(() => API.getEventsData()
+        //                 .then(eventsLog => {
+        //                     // Clear the events blank and refresh events list
+        //                     eventsInput = ""
+        //                     renderToDom.eventsList(eventsLog)
+        //                 }))
+        //     }
+        // })
     },
 
 

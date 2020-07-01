@@ -3,7 +3,7 @@
  Module by Tasha Lane
  */
 
-const createEventsObject = (events) => {
+const createEventsObject = (event) => {
   return {
     userId: parseInt(sessionStorage.getItem("currentUser")),
     name: name,
