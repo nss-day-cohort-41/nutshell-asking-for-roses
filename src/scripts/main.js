@@ -1,6 +1,8 @@
 import userRegistration from './registration/registration.js'
 import loadDashboard from './dashboard.js';
+import domobject from './domobject.js';
 
+domobject.deleteEventsList();
 const registrationContainer = document.querySelector("#registrationContainer")
 const hiddenDashboard = document.querySelector("#dashboardContainer")
 

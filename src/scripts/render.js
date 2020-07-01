@@ -59,23 +59,36 @@ const renderToDom = {
 
     eventsList() {
         // **TEST DATA - delete later
-        const eventsArray = [{
-            name: "test1",
-            date: "2020-06-05"
-        }, {
-            name: "test2",
-            date: "2020-05-04"
-        }, {
-            name: "test3",
-            date: "2020-06-21"
-        }]
+        const eventsArray = [
+          {
+            id: 1,
+            userId: 1,
+            name: "first event ever ",
+            location: "nextEvents section",
+            eventDate: "01/01/01",
+          },
+          {
+            id: 2,
+            userId: 2,
+            name: "2nd event to ever take place ",
+            location: "1st event in the events list",
+            eventDate: "02/02/02",
+          },
+          {
+            id: 3,
+            userId: 3,
+            name: "wow a third event!! ",
+            location: "2nd from the left? in events list",
+            eventDate: "03/03/03",
+          }
+        ];
         // **
 
         eventsArray.sort((event1, event2) => new Date(event2.date) - new Date(event1.date))
         console.log(eventsArray) // Remove this line later
         eventsArray.forEach(event => {
             const eventHTML = domObject.eventComponent(event)
-            // document.querySelector(".eventsList").innerHTML += eventHTML
+        document.querySelector(".eventsList").innerHTML += eventHTML
         })
     },
 

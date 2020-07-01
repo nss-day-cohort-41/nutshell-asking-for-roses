@@ -98,7 +98,23 @@ const API = {
             body: JSON.stringify(messagesObject),
         
         });
+    },
+
+    deleteEventsEntry: (eventsObjectId) => {
+        return fetch(`http://localhost:8088/events/${eventsObjectId}`, {
+            method: "DELETE",
+
+        })
+        .then(response => response.json())
+
     }
+        
 
 }
+
+
+
+
+
+
 export default API

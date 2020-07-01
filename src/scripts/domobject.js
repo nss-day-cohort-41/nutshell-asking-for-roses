@@ -44,7 +44,19 @@ const domObject = {
         return eventElement;
         
         
-    },       
+    },    
+    
+        deleteEventsList: () => { 
+        const eventsList = document.querySelector(".eventsList")
+          eventsList.addEventListener("click", (event) => {
+            if (event.target.id.startsWith("deleteEvents--")) {
+              console.log("delete button clicked");
+              const eventsIdToDelete = event.target.id.split("--")[1];
+              console.log("delete id", eventsIdToDelete);
+              API.deleteEventsEntry(eventsIdToDelete);
+            }
+          });
+        },
 
     articleComponent(articleObject) {
         const articleElement =
