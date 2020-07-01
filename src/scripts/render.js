@@ -94,6 +94,18 @@ const renderToDom = {
                 document.querySelector(".articlesList").innerHTML += articleHTML
             })
     },
+    articlesListDeleteButton = document.querySelector(".articlesList")
+
+    articlesListDeleteButton.addEventListener("click", (event) => {
+   
+      if (event.target.id.startsWith("articlesDeleteButton--")) {
+        console.log("delete button clicked");
+        const articleIdToDelete = event.target.id.split("--")[1];
+        console.log("delete id", articleIdToDelete);
+        API.deleteArticleEntry(articleIdToDelete);
+      }
+   
+    }),
 
     friendsList(friendsArray) {
 
