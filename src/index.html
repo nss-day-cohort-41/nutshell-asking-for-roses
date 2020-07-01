@@ -244,15 +244,20 @@
             </div>
                 <!-- Tasks Form will initially be hidden -->
                 <div class="newTaskContainer popupForm" class="hidden">
+                    <div class="showPopupContent">
                     <form class="newTaskForm">
-                        <input id="newTaskName" class="taskInput" type="text" placeholder="Enter New Task" required></input>
+                        <label for="newTaskDueDate">Enter New Task</label>
+                        <input id="newTaskName" class="taskInput" type="text" required></input>
+                        <label for="newTaskDueDate">Date to be Completed</label>
                         <input id="newTaskDueDate" class="dueDateInput" type="date" placeholder="Date to be Completed" required></input>
-                        <button class="sumbitNewTask" type="button">Save</button>
-                        <button class="cancelNewTask" type="button">Cancel</button>
+                        <button id="sumbitNewTask" type="button">Save</button>
+                        <button id="cancelNewTask" type="button">Cancel</button>
                     </form>
+                    </div>
                 </div>
             </main>
         </article>
+       
                 
     <footer>&copy 2020 Asking For Roses</footer>
                 

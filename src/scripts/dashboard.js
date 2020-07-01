@@ -14,21 +14,23 @@ const loadDashboard = () => {
     registrationContainer.classList.toggle("hidden")
     hiddenDashboard.classList.toggle("hidden")
     
+    // Load individual delete functions
+    //invoke add, delete, edit functionality for task buttons
+    taskFunctions.taskEvents();
+    
+    
     // Load individual data components
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     API.fetchUsers("http://localhost:8088/tasks").then(() => renderToDom.tasksList(API.userTaskArray))
     renderToDom.eventsList()
     renderToDom.articlesList()
 
-    // Load individual delete functions
-    //invoke add, delete, edit functionality for task buttons 
-    taskFunctions.taskEvents();
-    
-    
-    
-    // forms.renderingTaskForm();
+     
+     //Loading form components
+    //  forms.renderingTaskForm();
     // forms.renderingEventForm();
     // forms.renderingArticleForm();
+    
 
 }
 

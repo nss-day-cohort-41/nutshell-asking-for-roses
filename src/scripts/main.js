@@ -1,13 +1,16 @@
 import userRegistration from './registration/registration.js'
 import loadDashboard from './dashboard.js';
 
+
 const registrationContainer = document.querySelector("#registrationContainer")
 const hiddenDashboard = document.querySelector("#dashboardContainer")
 
 if (sessionStorage.getItem("currentUser")) {
     loadDashboard()
+   
 }
 
+ 
 userRegistration.clickRegistrationLink();
 userRegistration.registrationFormValidator();
 userRegistration.registeredUserLogin();

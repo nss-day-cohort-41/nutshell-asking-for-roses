@@ -3,7 +3,7 @@ import renderToDom from '../render.js'
 
 //creating form objects for tasks, events, and articles to render user input to DOM
 const forms = {
-     createTaskFormObject (name, dueDate, completed) {
+     createTaskFormObject (name, dueDate, completed = false) {
         const taskFormObject = {
             name,
             dueDate,
@@ -31,27 +31,23 @@ const forms = {
     return articleFormObject
     },
     
-   //adding event listeners to save and cancel buttons on each task, event, and article pop-up forms
-    renderingTaskForm() {
-        //target save new task button to save to database, retrieve, and display on DOM
-        const saveNewTaskButton = document.querySelector(".submitNewTask")
-        saveNewTaskButton.addEventListener("click", clickEvent => {
-            const taskInput = document.querySelector(".taskInput")
-            const dueDateInput = document.querySelector(".dueDateInput")
-            const generateTaskFormData = createTaskFormObject(name, dueDate)
-            API.newTasksEntry(generateTaskFormData(taskInput.value, dueDateInput.value))
-            .then(() => API.getTasksData())
-            //?
-            .then(renderToDom.tasksList(API.userTaskArray))
-        })
+   //not working fixxxx
+   renderingTaskForm() {
+    //target save new task button to save to database, retrieve, and display on DOM
+    
+        // const saveNewTaskButton = document.getElementById("submitNewTask")
+        // saveNewTaskButton.addEventListener("click", clickEvent => {
+        //     const taskInput = document.querySelector(".taskInput")
+        //     const dueDateInput = document.querySelector(".dueDateInput")
+        //     const generateTaskFormData = createTaskFormObject(name, dueDate)
+        //     API.newTasksEntry(generateTaskFormData(taskInput.value, dueDateInput.value))
+        //     .then(API.fetchUsers("http://localhost:8088/tasks"))
+        //     .then(renderToDom.tasksList(API.userTaskArray))
+        // })
+    //   
 
-        const cancelNewTask = document.querySelector(".cancelNewTask")
-        cancelNewTask.addEventListener("click", clickEvent => {
-            //make new task popup window disappear
-        })
-        
-    },
-
+    
+},
     renderingEventForm() {
         const saveNewEventButton = document.querySelector(".submitNewEvent")
         saveNewEventButton.addEventListener("click", clickEvent => {
