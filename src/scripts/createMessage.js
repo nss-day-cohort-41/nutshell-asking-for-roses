@@ -3,14 +3,11 @@
  Module by David Larsen
  */
 
- const createMessageObject = (message, timestamp) => {
-     if (timestamp === "") {
-         timestamp = Date.now()
-     }
+ const createMessageObject = (message) => {
      return {
         "userId": parseInt(sessionStorage.getItem("currentUser")),
         "message": message,
-        "timestamp": timestamp
+        "timestamp": Date.now()
      }
  }
 

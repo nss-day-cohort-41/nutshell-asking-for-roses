@@ -12,7 +12,7 @@ const renderToDom = {
     messagesList(messagesArray) {
         const messagesListDOM = document.querySelector(".messagesList")
         // Sort list of messages by date
-        messagesArray.sort((message1, message2) => new Date(message2.timestamp) - new Date(message1.timestamp))
+        messagesArray.sort((message1, message2) => message2.timestamp - message1.timestamp)
         // Clear existing list then render current list
         messagesListDOM.innerHTML = ""
         messagesArray.forEach(message => {
@@ -24,9 +24,8 @@ const renderToDom = {
 
         document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
             let messageField = document.getElementById("messagesUserInput").value
-            let timestamp = document.getElementById("messageTimestamp").value
             let messageId = document.getElementById("messageId").value
-            const messageToSave = createMessageObject(messageField, timestamp)
+            const messageToSave = createMessageObject(messageField)
 
             // Check if message is new or edited
             if (messageId === "") {
@@ -46,7 +45,6 @@ const renderToDom = {
                         .then(messagesCollection => {
                             // Clear the message blank and refresh messages list
                             messageField = ""
-                            timestamp = ""
                             messageId = ""
                             renderToDom.messagesList(messagesCollection)
                         }
@@ -64,7 +62,6 @@ const renderToDom = {
                     .then(response => response.json())
                     .then(entry => {
                         document.getElementById("messagesUserInput").value = entry.message
-                        document.getElementById("messageTimestamp").value = entry.timestamp
                         document.getElementById("messageId").value = entry.id
                     })
             }
