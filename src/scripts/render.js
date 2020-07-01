@@ -119,11 +119,7 @@ const renderToDom = {
         })
     },
 
-    friendsList(friendsArray) {
-        friendsArray.forEach(friend => {
-            const friendHTML = domObject.friendComponent(friend)
-            document.querySelector(".friendsList").innerHTML += friendHTML
-        })
+    friendsList() {
   
     }
 }

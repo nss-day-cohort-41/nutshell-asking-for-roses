@@ -16,35 +16,34 @@ const loadDashboard = () => {
     // Queue current user ID
     const currentUserID = parseInt(sessionStorage.getItem("currentUser"))
     // Load individual data components
-    // API.getFriendsData(currentUserID).then(friendsArray => renderToDom.friendsList(friendsArray))
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     .then(() => {
         // Save new message
 
         document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
-            let messageField = document.getElementById("messagesUserInput").value
-            let messageId = document.getElementById("messageId").value
-            const messageToSave = createMessageObject(messageField)
+            let messageField = document.getElementById("messagesUserInput")
+            let messageId = document.getElementById("messageId")
+            const messageToSave = createMessageObject(messageField.value)
 
             // Check if message is new or edited
-            if (messageId === "") {
+            if (messageId.value === "") {
 
                 API.newMessagesEntry(messageToSave)
                     .then(() => API.getMessagesData()
                         .then(messagesCollection => {
                             // Clear the message blank and refresh messages list
-                            messageField = ""
+                            messageField.value = ""
                             renderToDom.messagesList(messagesCollection)
                         }))
 
             } else {
                 // Edited entry
-                API.editMessage(messageToSave, messageId)
+                API.editMessage(messageToSave, messageId.value)
                     .then(() => API.getMessagesData()
                         .then(messagesCollection => {
                             // Clear the message blank and refresh messages list
-                            messageField = ""
-                            messageId = ""
+                            messageField.value = ""
+                            messageId.value = ""
                             renderToDom.messagesList(messagesCollection)
                         })
                     )

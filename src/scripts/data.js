@@ -1,8 +1,3 @@
-/* Object to obtain all data from JSON server
-
-Authors of individual componenents listed below */
-
-let friendsList = []
 
 const API = {
     // Sisi User GET and POST calls
@@ -46,11 +41,8 @@ const API = {
     },
     // Get friends data and store in array for access by other modules. Tasha Lane and David Larsen
     getFriendsData: (currentUserId) => {
-        return fetch(`http://localhost:8088/friends?following=${currentUserId}?_expand=user`)
+        return fetch("http://localhost:8088/friends")
             .then(friends => friends.json())
-            .then(friendsArray => {
-                friendsList = friendsArray
-                console.log(friendsList)})
     },
 
     getMessagesData: () => {
