@@ -57,9 +57,9 @@ const taskFunctions = {
              const popUpContainer = document.querySelector('.popupForm')
              popUpContainer.classList.add('is-open')
             
-             window.onload = () => {
+            //  window.onload = () => {
              //target cancel button and CLOSE popup modal
-             const cancelNewTask = document.querySelector(".cancelNewTask")
+             const cancelNewTask = document.querySelector("#cancelNewTask")
              cancelNewTask.addEventListener("click", clickEvent => {
               console.log("cancel button working")
               popUpContainer.classList.remove('is-open')
@@ -77,7 +77,7 @@ const taskFunctions = {
             .then(API.fetchUsers("http://localhost:8088/tasks"))
             .then(renderToDom.tasksList(API.userTaskArray))
         })
-    }
+    // }
          }) 
         
 
