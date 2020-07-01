@@ -32,6 +32,7 @@ button {
 
 .friendsList {
     border: 1px solid black;
+    height: 65%;
 
 }
 .friendsList__Item {
@@ -41,6 +42,7 @@ button {
 
 .nextEvents {
     border: 1px solid black;
+    height: 35%;
 
 }
 .nextEvents__Item {
@@ -50,10 +52,13 @@ button {
 .articlesList {
     border: 1px solid black;
     display: flex;
-      height: 25%;
+    height: 25%;
+    overflow: scroll;
 }
 .articlesList__Item {
     border: 1px dotted black;
+    width: 30%;
+    overflow: scroll;
 }
 
 .messagesBoard {
@@ -84,6 +89,7 @@ border: 1px dotted black;
 
 .tasksList {
     display: flex;
+    flex-direction: column;
     border: 1px solid black;
 }
 .tasksList__Item {
