@@ -39,7 +39,8 @@ const API = {
         return fetch("http://localhost:8088/tasks")
             .then(tasks => tasks.json())
     },
-    getFriendsData: () => {
+    // Get friends data and store in array for access by other modules. Tasha Lane and David Larsen
+    getFriendsData: (currentUserId) => {
         return fetch("http://localhost:8088/friends")
             .then(friends => friends.json())
     },
@@ -98,6 +99,7 @@ const API = {
         });
     },
 
+    // Edit message call by David Larsen
     editMessage: (messageObject, messageId) => {
         return fetch(`http://localhost:8088/messages/${messageId}`, {
             method: "PUT",
