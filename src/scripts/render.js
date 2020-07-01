@@ -1,4 +1,6 @@
+import API from "./data.js"
 import domObject from "./domobject.js"
+import createMessageObject from "./createMessage.js"
 
 /* Object which renders data to each section of the Dashboard
 
@@ -8,15 +10,63 @@ const renderToDom = {
 
     // Render the list of messages in the chat window
     messagesList(messagesArray) {
-
-        // Sort list of messages by date and render each message to the DOM
-        messagesArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
-        // Clear existing list
-        document.querySelector(".messagesList").innerHTML = ""
+        const messagesListDOM = document.querySelector(".messagesList")
+        // Sort list of messages by date
+        messagesArray.sort((message1, message2) => message2.timestamp - message1.timestamp)
+        // Clear existing list then render current list
+        messagesListDOM.innerHTML = ""
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            document.querySelector(".messagesList").innerHTML += messageHTML
+            messagesListDOM.innerHTML += messageHTML
         })
+
+        // Save new message
+
+        document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
+            let messageField = document.getElementById("messagesUserInput").value
+            let messageId = document.getElementById("messageId").value
+            const messageToSave = createMessageObject(messageField)
+
+            // Check if message is new or edited
+            if (messageId === "") {
+
+                API.newMessagesEntry(messageToSave)
+                    .then(() => API.getMessagesData()
+                        .then(messagesCollection => {
+                            // Clear the message blank and refresh messages list
+                            messageField = ""
+                            renderToDom.messagesList(messagesCollection)
+                        }))
+
+            } else {
+                // Edited entry
+                API.editMessage(messageToSave, messageId)
+                    .then(() => API.getMessagesData()
+                        .then(messagesCollection => {
+                            // Clear the message blank and refresh messages list
+                            messageField = ""
+                            messageId = ""
+                            renderToDom.messagesList(messagesCollection)
+                        }
+                        )
+                    )
+            }
+                
+        })
+
+        // Edit existing message
+        messagesListDOM.addEventListener("click", event => {
+            if (event.target.id.startsWith("editMessage--")) {
+                const entryIdToEdit = event.target.id.split("--")[1]
+                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
+                    .then(response => response.json())
+                    .then(entry => {
+                        document.getElementById("messagesUserInput").value = entry.message
+                        document.getElementById("messageId").value = entry.id
+                    })
+            }
+        })
+
     },
 
     tasksList() {
@@ -37,8 +87,8 @@ const renderToDom = {
         // **
 
         // Separate and sort with completed items at the top of the list, then sorted in order by due date
-        const completeTasks = tasksArray.filter(task => {return task.completed === true})
-        const incompleteTasks = tasksArray.filter(task => {return task.completed === false})
+        const completeTasks = tasksArray.filter(task => { return task.completed === true })
+        const incompleteTasks = tasksArray.filter(task => { return task.completed === false })
 
         completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
         incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
@@ -60,27 +110,27 @@ const renderToDom = {
     eventsList() {
         // **TEST DATA - delete later
         const eventsArray = [
-          {
-            id: 1,
-            userId: 1,
-            name: "first event ever ",
-            location: "nextEvents section",
-            eventDate: "01/01/01",
-          },
-          {
-            id: 2,
-            userId: 2,
-            name: "2nd event to ever take place ",
-            location: "1st event in the events list",
-            eventDate: "02/02/02",
-          },
-          {
-            id: 3,
-            userId: 3,
-            name: "wow a third event!! ",
-            location: "2nd from the left? in events list",
-            eventDate: "03/03/03",
-          }
+            {
+                id: 1,
+                userId: 1,
+                name: "first event ever ",
+                location: "nextEvents section",
+                eventDate: "01/01/01",
+            },
+            {
+                id: 2,
+                userId: 2,
+                name: "2nd event to ever take place ",
+                location: "1st event in the events list",
+                eventDate: "02/02/02",
+            },
+            {
+                id: 3,
+                userId: 3,
+                name: "wow a third event!! ",
+                location: "2nd from the left? in events list",
+                eventDate: "03/03/03",
+            }
         ];
         // **
 
@@ -88,51 +138,85 @@ const renderToDom = {
         console.log(eventsArray) // Remove this line later
         eventsArray.forEach(event => {
             const eventHTML = domObject.eventComponent(event)
-        document.querySelector(".eventsList").innerHTML += eventHTML
+            document.querySelector(".eventsList").innerHTML += eventHTML
+        })
+        const eventsList = document.querySelector(".eventsList");
+        eventsList.addEventListener("click", (event) => {
+            if (event.target.id.startsWith("eventsDeleteButton--")) {
+                console.log("delete button clicked");
+                const eventsIdToDelete = event.target.id.split("--")[1];
+                console.log("delete id", eventsIdToDelete);
+                API.deleteEventsEntry(eventsIdToDelete);
+            }
+        });
+
+        // Save new message
+
+        document.querySelector(".eventsSubmitButton").addEventListener("click", event => {
+            let eventsInput = document.getElementById("eventsUserInput").value
+            let eventsId = document.getElementById("eventsId").value
+            const eventsToSave = createEventObject(eventsInput)
+
+            // Check if events is new or edited
+            if (eventsId === "") {
+
+                API.newEventsEntry(eventsToSave)
+                    .then(() => API.getEventsData()
+                        .then(eventsLog => {
+                            // Clear the events blank and refresh events list
+                            eventsInput = ""
+                            renderToDom.eventsList(eventsLog)
+                        }))
+            }
         })
     },
 
-    articlesList() {
-        // **TEST DATA - delete later
-        const articlesArray = [
-            {
-                "id": 1,
-                "userId": 1,
-                "url": "www.google.com",
-                "title": "actionNews 1",
-                "synopsis": "Ron Tucker did this",
-                "dateOfNews": "01/01/01"
-              },
-              {
-                "id": 2,
-                "userId": 2,
-                "url": "www.google.com",
-                "title": "actionNews 2",
-                "synopsis": "Ron Burgendy is legend",
-                "dateOfNews": "02/02/02"
-              },
-              {
-                "id": 3,
-                "userId": 3,
-                "url": "www.google.com",
-                "title": "actionNews 3",
-                "synopsis": "Billy Madison ran over a penguin!!",
-                "dateOfNews": "03/03/03"
-              }
+
+    
+                    
+
+            articlesList() {
+            // **TEST DATA - delete later
+            const articlesArray = [
+                {
+                    "id": 1,
+                    "userId": 1,
+                    "url": "www.google.com",
+                    "title": "actionNews 1",
+                    "synopsis": "Ron Tucker did this",
+                    "dateOfNews": "01/01/01"
+                },
+                {
+                    "id": 2,
+                    "userId": 2,
+                    "url": "www.google.com",
+                    "title": "actionNews 2",
+                    "synopsis": "Ron Burgendy is legend",
+                    "dateOfNews": "02/02/02"
+                },
+                {
+                    "id": 3,
+                    "userId": 3,
+                    "url": "www.google.com",
+                    "title": "actionNews 3",
+                    "synopsis": "Billy Madison ran over a penguin!!",
+                    "dateOfNews": "03/03/03"
+                }
             ]
         // **
 
         articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
         console.log(articlesArray) // Remove this line later
         articlesArray.forEach(article => {
-            const articleHTML = domObject.articleComponent(article)
-            document.querySelector(".articlesList").innerHTML += articleHTML
-        })
-    },
+                const articleHTML = domObject.articleComponent(article)
+                document.querySelector(".articlesList").innerHTML += articleHTML
+            })
+        },
 
-    friendsList(friendsArray) {
+            friendsList(friendsArray) {
 
-    }
+        }
 }
+
 
 export default renderToDom

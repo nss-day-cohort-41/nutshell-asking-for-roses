@@ -96,7 +96,6 @@ const API = {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(messagesObject),
-        
         });
     },
 
@@ -107,9 +106,18 @@ const API = {
         })
         .then(response => response.json())
 
-    }
+    },
         
 
+    editMessage: (messageObject, messageId) => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObject)
+        });
+    }
 }
 
 

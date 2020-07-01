@@ -1,6 +1,6 @@
 /* Object with methods to render each section's items to the DOM
 
-Outline by David Larsen */ 
+Main object by David Larsen */ 
 
 const domObject = {
     // Message Component by David Larsen
@@ -9,8 +9,8 @@ const domObject = {
         
         // Apply edit button HTML only to the current user's messages
         if (messageObject.userId === parseInt(sessionStorage.getItem("currentUser"))) {
-            editButtonHTML = `<button type="button" id="editMessage--${messageObject.id} class="dashboardButton">Edit</button>`
-        } 
+            editButtonHTML = `<button type="button" id="editMessage--${messageObject.id}" class="dashboardButton">Edit</button>`
+        }
         
         // HTML to be rendered to the DOM
         return `<section class=messageList__item">
@@ -44,19 +44,9 @@ const domObject = {
         return eventElement;
         
         
-    },    
     
-        deleteEventsList: () => { 
-        const eventsList = document.querySelector(".eventsList")
-          eventsList.addEventListener("click", (event) => {
-            if (event.target.id.startsWith("deleteEvents--")) {
-              console.log("delete button clicked");
-              const eventsIdToDelete = event.target.id.split("--")[1];
-              console.log("delete id", eventsIdToDelete);
-              API.deleteEventsEntry(eventsIdToDelete);
-            }
-          });
-        },
+        
+    },     
 
     articleComponent(articleObject) {
         const articleElement =
