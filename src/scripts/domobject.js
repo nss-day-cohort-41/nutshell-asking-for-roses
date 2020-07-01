@@ -1,6 +1,6 @@
 /* Object with methods to render each section's items to the DOM
 
-Outline by David Larsen */ 
+Main object by David Larsen */ 
 
 const domObject = {
     // Message Component by David Larsen

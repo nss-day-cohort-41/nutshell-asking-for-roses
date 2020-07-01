@@ -1,4 +1,6 @@
+import API from "./data.js"
 import domObject from "./domobject.js"
+import createMessageObject from "./createMessage.js"
 
 /* Object which renders data to each section of the Dashboard
 
@@ -8,15 +10,37 @@ const renderToDom = {
 
     // Render the list of messages in the chat window
     messagesList(messagesArray) {
-
-        // Sort list of messages by date and render each message to the DOM
+        const messagesListDOM = document.querySelector(".messagesList")
+        // Sort list of messages by date
         messagesArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
-        // Clear existing list
-        document.querySelector(".messagesList").innerHTML = ""
+        // Clear existing list then render current list
+        messagesListDOM.innerHTML = ""
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            document.querySelector(".messagesList").innerHTML += messageHTML
+            messagesListDOM.innerHTML += messageHTML
         })
+
+        // Save new message
+        document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
+            let messageField = document.getElementById("messagesUserInput").value
+            const messageToSave = createMessageObject(messageField)
+            API.newMessagesEntry(messageToSave)
+                .then(() => API.getMessagesData()
+                    .then(messagesCollection => {
+                        // Clear the message blank and refresh messages list
+                        messageField = ""
+                        renderToDom.messagesList(messagesCollection)
+                    }
+                )
+            )
+
+        })
+
+        // Edit existing message
+        messagesListDOM.addEventListener("click", event => {
+            
+
+
     },
 
     tasksList() {
