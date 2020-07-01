@@ -6,12 +6,21 @@
     --light-blue: #d4ebd0;
 }
 
-header {
-    border: 1px solid var(--med-blue);
-    }
+.dashboardHeader {
+    height: 100px;
+}
 
-button {
-    margin: 1em;
+.header__blue {
+    margin: 30px 0;
+    height: 40px;
+    background-color: var(--med-blue);
+}
+
+.dashboardLogo__image {
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 90px;
 }
 
 .topContainer {
@@ -31,13 +40,13 @@ button {
 }
 
 .friendsList {
-    border: 1px solid black;
     height: 65%;
-
+    background-color: cornsilk;
+    margin: 0 5%;
 }
+
 .friendsList__Item {
     border: 1px dotted black;
-
 }
 
 .nextEvents {
@@ -73,7 +82,15 @@ button {
 }
 
 .messagesList__Item {
-border: 1px dotted black;
+    border: 1px dotted black;
+}
+
+.list__Item__Input {
+    width: 70%;
+}
+
+.messageButton {
+    width: 30%;
 }
 
 .eventsList {
@@ -84,7 +101,6 @@ border: 1px dotted black;
 
 .eventsList__Item {
     border: 1px dotted black;
-
 }
 
 .tasksList {

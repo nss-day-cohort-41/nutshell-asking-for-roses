@@ -14,7 +14,7 @@ const domObject = {
         
         // HTML to be rendered to the DOM
         return `<section class=messageList__item">
-        <span class="List__Item__Input">
+        <span class="list__Item__Input">
         <p><strong><a class ="messagesList__Item__User" href="#friendsRequestAlert">${messageObject.user.username}</a></strong>--${messageObject.message}</p>
         </span>
         <span class="messageButton">
