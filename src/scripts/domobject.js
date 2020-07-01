@@ -9,7 +9,7 @@ const domObject = {
         
         // Apply edit button HTML only to the current user's messages
         if (messageObject.userId === parseInt(sessionStorage.getItem("currentUser"))) {
-            editButtonHTML = `<button type="button" id="editMessage--${messageObject.id} class="dashboardButton">Edit</button>`
+            editButtonHTML = `<button type="button" id="editMessage--${messageObject.id}" class="dashboardButton">Edit</button>`
         } 
         
         // HTML to be rendered to the DOM

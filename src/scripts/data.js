@@ -96,7 +96,16 @@ const API = {
             },
             body: JSON.stringify(messagesObject),
         });
-    }
+    },
 
+    editMessage: (messageObject, messageId) => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObject)
+        });
+    }
 }
 export default API

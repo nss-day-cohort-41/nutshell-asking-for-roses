@@ -21,25 +21,54 @@ const renderToDom = {
         })
 
         // Save new message
+
         document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
             let messageField = document.getElementById("messagesUserInput").value
-            const messageToSave = createMessageObject(messageField)
-            API.newMessagesEntry(messageToSave)
-                .then(() => API.getMessagesData()
-                    .then(messagesCollection => {
-                        // Clear the message blank and refresh messages list
-                        messageField = ""
-                        renderToDom.messagesList(messagesCollection)
-                    }
-                )
-            )
+            let timestamp = document.getElementById("messageTimestamp").value
+            let messageId = document.getElementById("messageId").value
+            const messageToSave = createMessageObject(messageField, timestamp)
 
+            // Check if message is new or edited
+            if (messageId === "") {
+
+                API.newMessagesEntry(messageToSave)
+                .then(() => API.getMessagesData()
+                .then(messagesCollection => {
+                    // Clear the message blank and refresh messages list
+                    messageField = ""
+                    renderToDom.messagesList(messagesCollection)
+                }))
+
+            } else {
+                // Edited entry
+                API.editMessage(messageToSave, messageId)
+                    .then(() => API.getMessagesData()
+                        .then(messagesCollection => {
+                            // Clear the message blank and refresh messages list
+                            messageField = ""
+                            timestamp = ""
+                            messageId = ""
+                            renderToDom.messagesList(messagesCollection)
+                        }
+                    )
+                )
+            }
+                
         })
 
         // Edit existing message
         messagesListDOM.addEventListener("click", event => {
-            
-
+            if (event.target.id.startsWith("editMessage--")) {
+                const entryIdToEdit = event.target.id.split("--")[1]
+                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
+                    .then(response => response.json())
+                    .then(entry => {
+                        document.getElementById("messagesUserInput").value = entry.message
+                        document.getElementById("messageTimestamp").value = entry.timestamp
+                        document.getElementById("messageId").value = entry.id
+                    })
+            }
+        })
 
     },
 
