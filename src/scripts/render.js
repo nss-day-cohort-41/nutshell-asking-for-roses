@@ -134,16 +134,9 @@ const renderToDom = {
     },
 
     //ARTICLE LIST MAKER created by Brett Stoudt
-    //Ask David to explain sort...
     articlesList(articlesArray) {
             articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
-            document.querySelector(".articlesList").innerHTML = `<div class=articleList__Heading>
-            <h2>NEWS ARTICLES to Expand your Mind</h2>
-            <!-- ADD ARTICLES BUTTON -->
-            <div>
-            <button type="button" id="articlesAddButton">Add Article Button</button>
-            </div>
-        </div>`
+            document.querySelector(".articlesList").innerHTML = ""
             articlesArray.forEach(article => {
                 const articleHTML = domObject.articleComponent(article)
                 document.querySelector(".articlesList").innerHTML += articleHTML
