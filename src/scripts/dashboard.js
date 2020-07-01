@@ -1,7 +1,7 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
-import forms from './forms/allForms.js';
-import taskFunctions from '../tasks/taskButtons.js';
+import forms from './forms.js';
+import taskFunctions from '../scripts/tasks/taskButtons.js';
 
 /* File created/refactored by David Larsen
     Original "load dashboard" code by Brett Stoudt

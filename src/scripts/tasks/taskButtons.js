@@ -1,6 +1,6 @@
-import API from '../scripts/data.js'
-import renderToDom from '../scripts/render.js'
-import forms from '../scripts/forms/allForms.js'
+import API from '../data.js'
+import renderToDom from '../render.js'
+import forms from '../forms/allForms.js'
 
 
 const taskFunctions = {
