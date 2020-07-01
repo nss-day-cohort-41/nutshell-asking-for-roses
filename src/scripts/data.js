@@ -1,3 +1,8 @@
+/* Object to obtain all data from JSON server
+
+Authors of individual componenents listed below */
+
+let friendsList = []
 
 const API = {
     // Sisi User GET and POST calls
@@ -39,9 +44,13 @@ const API = {
         return fetch("http://localhost:8088/tasks")
             .then(tasks => tasks.json())
     },
-    getFriendsData: () => {
-        return fetch("http://localhost:8088/friends")
+    // Get friends data and store in array for access by other modules. Tasha Lane and David Larsen
+    getFriendsData: (currentUserId) => {
+        return fetch(`http://localhost:8088/friends?following=${currentUserId}?_expand=user`)
             .then(friends => friends.json())
+            .then(friendsArray => {
+                friendsList = friendsArray
+                console.log(friendsList)})
     },
 
     getMessagesData: () => {
@@ -98,6 +107,7 @@ const API = {
         });
     },
 
+    // Edit message call by David Larsen
     editMessage: (messageObject, messageId) => {
         return fetch(`http://localhost:8088/messages/${messageId}`, {
             method: "PUT",
