@@ -1,5 +1,6 @@
-import domObject from "./domobject.js"
 import API from "./data.js"
+import domObject from "./domobject.js"
+import createMessageObject from "./createMessage.js"
 
 /* Object which renders data to each section of the Dashboard
 
@@ -9,15 +10,63 @@ const renderToDom = {
 
     // Render the list of messages in the chat window
     messagesList(messagesArray) {
-
-        // Sort list of messages by date and render each message to the DOM
-        messagesArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
-        // Clear existing list
-        document.querySelector(".messagesList").innerHTML = ""
+        const messagesListDOM = document.querySelector(".messagesList")
+        // Sort list of messages by date
+        messagesArray.sort((message1, message2) => message2.timestamp - message1.timestamp)
+        // Clear existing list then render current list
+        messagesListDOM.innerHTML = ""
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
-            document.querySelector(".messagesList").innerHTML += messageHTML
+            messagesListDOM.innerHTML += messageHTML
         })
+
+        // Save new message
+
+        document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
+            let messageField = document.getElementById("messagesUserInput").value
+            let messageId = document.getElementById("messageId").value
+            const messageToSave = createMessageObject(messageField)
+
+            // Check if message is new or edited
+            if (messageId === "") {
+
+                API.newMessagesEntry(messageToSave)
+                .then(() => API.getMessagesData()
+                .then(messagesCollection => {
+                    // Clear the message blank and refresh messages list
+                    messageField = ""
+                    renderToDom.messagesList(messagesCollection)
+                }))
+
+            } else {
+                // Edited entry
+                API.editMessage(messageToSave, messageId)
+                    .then(() => API.getMessagesData()
+                        .then(messagesCollection => {
+                            // Clear the message blank and refresh messages list
+                            messageField = ""
+                            messageId = ""
+                            renderToDom.messagesList(messagesCollection)
+                        }
+                    )
+                )
+            }
+                
+        })
+
+        // Edit existing message
+        messagesListDOM.addEventListener("click", event => {
+            if (event.target.id.startsWith("editMessage--")) {
+                const entryIdToEdit = event.target.id.split("--")[1]
+                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
+                    .then(response => response.json())
+                    .then(entry => {
+                        document.getElementById("messagesUserInput").value = entry.message
+                        document.getElementById("messageId").value = entry.id
+                    })
+            }
+        })
+
     },
 
     tasksList() {
@@ -94,18 +143,7 @@ const renderToDom = {
                 document.querySelector(".articlesList").innerHTML += articleHTML
             })
     },
-    articlesListDeleteButton = document.querySelector(".articlesList")
 
-    articlesListDeleteButton.addEventListener("click", (event) => {
-   
-      if (event.target.id.startsWith("articlesDeleteButton--")) {
-        console.log("delete button clicked");
-        const articleIdToDelete = event.target.id.split("--")[1];
-        console.log("delete id", articleIdToDelete);
-        API.deleteArticleEntry(articleIdToDelete);
-      }
-   
-    }),
 
     friendsList(friendsArray) {
 

@@ -53,6 +53,12 @@ button {
     border: .2em solid black;
 }
 
+.messagesList {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: scroll;
+}
+
 .messagesList__Item {
 border: .1em dotted black;
 }
