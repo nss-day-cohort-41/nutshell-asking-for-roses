@@ -1,5 +1,6 @@
 import API from '../data.js'
 import createUserObject from './createUser.js'
+import loadDashboard from '../dashboard.js'
 
 const userRegistration = {
     //registered user login 
@@ -9,8 +10,6 @@ const userRegistration = {
         const passwordLogin = document.querySelector("#loginPassword")
         const signInButton = document.querySelector("#signInButton")
         const loginInputFields = document.getElementsByClassName("login__input")
-        const registrationContainer= document.querySelector("#registrationContainer")
-        const hiddenDashboard = document.querySelector("#dashboardContainer")
        
         //loop through class names for inputs and not allowing sign-in button to be clicked until all fields are filled out
         for (let i = 0; i < loginInputFields.length; i++) {
@@ -46,8 +45,7 @@ const userRegistration = {
                         passwordLogin.style.borderColor = ""
                         console.log("stored user:", sessionStorage.getItem("currentUser"))
                         //***need to display main dashboard****
-                        registrationContainer.classList.toggle("hidden")
-                        hiddenDashboard.classList.toggle("hidden");
+                        loadDashboard()
                         //if email not found, alert user
                     } else if (!findEmail) {
                         alert("Your email address does not match existing user");
@@ -169,8 +167,9 @@ const userRegistration = {
                             console.log("stored userId:", sessionStorage.getItem("currentUser"))
                             this.clearRegistrationFields();
                             registerButton.disabled = true;
-                            hiddenDashboard.classList.toggle("hidden");
-                            registrationContainer.classList.toggle("hidden")
+                            
+                            // Load the dashboard
+                            loadDashboard()
                         })
                     }
                 })

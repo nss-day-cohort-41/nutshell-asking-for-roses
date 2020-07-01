@@ -24,10 +24,7 @@ const API = {
         })
     },
 
-
-
     // Tasha Lane created API fetch calls
-
 
     getArticlesData: () => {
         return fetch("http://localhost:8088/articles")
@@ -48,13 +45,13 @@ const API = {
     },
 
     getMessagesData: () => {
-        return fetch("http://localhost:8088/messages")
+        return fetch("http://localhost:8088/messages?_expand=user")
             .then(messages => messages.json())
     },
 
 
     newArticlesEntry: (articlesObject) => {
-        return fetch("http://localhost:8808/articles", {
+        return fetch("http://localhost:8088/articles", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -101,7 +98,15 @@ const API = {
             body: JSON.stringify(messagesObject),
         
         });
-    }
+    },
+     //responsible for running after the delete button is clicked
+         //created by Brett Stoudt
+     deleteArticleEntry: (id) => {
+        return fetch(`http://localhost:8088/articles/${id}`, {
+            method: "DELETE",
+        }).then(response => response.json())
+            .then(response => response)
+    },
 
 }
 export default API
