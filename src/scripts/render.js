@@ -1,6 +1,5 @@
 import API from "./data.js"
 import domObject from "./domobject.js"
-import createMessageObject from "./createMessage.js"
 
 /* Object which renders data to each section of the Dashboard
 
@@ -18,53 +17,6 @@ const renderToDom = {
         messagesArray.forEach(message => {
             const messageHTML = domObject.messageComponent(message)
             messagesListDOM.innerHTML += messageHTML
-        })
-
-        // Save new message
-
-        document.querySelector(".messagesSubmitButton").addEventListener("click", event => {
-            let messageField = document.getElementById("messagesUserInput").value
-            let messageId = document.getElementById("messageId").value
-            const messageToSave = createMessageObject(messageField)
-
-            // Check if message is new or edited
-            if (messageId === "") {
-
-                API.newMessagesEntry(messageToSave)
-                    .then(() => API.getMessagesData()
-                        .then(messagesCollection => {
-                            // Clear the message blank and refresh messages list
-                            messageField = ""
-                            renderToDom.messagesList(messagesCollection)
-                        }))
-
-            } else {
-                // Edited entry
-                API.editMessage(messageToSave, messageId)
-                    .then(() => API.getMessagesData()
-                        .then(messagesCollection => {
-                            // Clear the message blank and refresh messages list
-                            messageField = ""
-                            messageId = ""
-                            renderToDom.messagesList(messagesCollection)
-                        }
-                        )
-                    )
-            }
-                
-        })
-
-        // Edit existing message
-        messagesListDOM.addEventListener("click", event => {
-            if (event.target.id.startsWith("editMessage--")) {
-                const entryIdToEdit = event.target.id.split("--")[1]
-                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
-                    .then(response => response.json())
-                    .then(entry => {
-                        document.getElementById("messagesUserInput").value = entry.message
-                        document.getElementById("messageId").value = entry.id
-                    })
-            }
         })
 
     },
@@ -136,23 +88,23 @@ const renderToDom = {
         })
         // Save new events
 
-        // document.querySelector("#submitNewEvent").addEventListener("click", (event) => {
-        //     let eventsInput = document.getElementById("eventsUserInput").value
-        //     let eventsId = document.getElementById("eventsId").value
-        //     const eventsToSave = createEventObject(eventsInput)
+        document.querySelector("#submitNewEvent").addEventListener("click", (event) => {
+            let eventsInput = document.getElementById("eventsUserInput").value
+            let eventsId = document.getElementById("eventsId").value
+            const eventsToSave = createEventObject(eventsInput)
 
-        //     // Check if events is new or edited
-        //     if (eventsId === "") {
+            // Check if events is new or edited
+            if (eventsId === "") {
 
-        //         API.newEventsEntry(eventsToSave)
-        //             .then(() => API.getEventsData()
-        //                 .then(eventsLog => {
-        //                     // Clear the events blank and refresh events list
-        //                     eventsInput = ""
-        //                     renderToDom.eventsList(eventsLog)
-        //                 }))
-        //     }
-        // })
+                API.newEventsEntry(eventsToSave)
+                    .then(() => API.getEventsData()
+                        .then(eventsLog => {
+                            // Clear the events blank and refresh events list
+                            eventsInput = ""
+                            renderToDom.eventsList(eventsLog)
+                        }))
+            }
+        })
     },
 
 
@@ -197,9 +149,9 @@ const renderToDom = {
             })
         },
 
-            friendsList(friendsArray) {
-
-        }
+    friendsList() {
+  
+    }
 }
 
 
