@@ -12,7 +12,7 @@ const renderToDom = {
     messagesList(messagesArray) {
         const messagesListDOM = document.querySelector(".messagesList")
         // Sort list of messages by date
-        messagesArray.sort((message1, message2) => new Date(message2.date) - new Date(message1.date))
+        messagesArray.sort((message1, message2) => new Date(message2.timestamp) - new Date(message1.timestamp))
         // Clear existing list then render current list
         messagesListDOM.innerHTML = ""
         messagesArray.forEach(message => {
