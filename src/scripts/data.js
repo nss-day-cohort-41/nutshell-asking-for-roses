@@ -58,7 +58,6 @@ const API = {
             .then(messages => messages.json())
     },
 
-
     newArticlesEntry: (articlesObject) => {
         return fetch("http://localhost:8088/articles", {
             method: "POST",
@@ -105,7 +104,6 @@ const API = {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(messagesObject),
-        
         });
     },
 
@@ -125,8 +123,17 @@ const API = {
                 },
                 body: JSON.stringify(taskObject)
             })
-        }
+        },
 
+    editMessage: (messageObject, messageId) => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObject)
+        });
+    }
 }
 export default API
 
