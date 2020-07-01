@@ -1,11 +1,14 @@
-header {
-    border: .2em solid black
-    }
-    
-footer {
-    border: .2em solid black;
+:root {
+    --white: #FFFCF0;
+    --med-blue: #a4c5c6;
+    --purple: #856c8b;
+    --gray: #E4E4E4;
+    --light-blue: #d4ebd0;
 }
 
+header {
+    border: 1px solid var(--med-blue);
+    }
 
 button {
     margin: 1em;
@@ -16,62 +19,74 @@ button {
 }
 
 .columnLeft {
+    display: flex;
+    flex-direction: column;
     flex: 1;
 }
 
 .columnRight{
+    display: flex;
+    flex-direction: column;
     flex: 3;
 }
 
 .friendsList {
-    border: .2em solid black;
+    border: 1px solid black;
 
 }
 .friendsList__Item {
-    border: .1em dotted black;
+    border: 1px dotted black;
 
 }
 
 .nextEvents {
-    border: .2em solid black;
+    border: 1px solid black;
 
 }
 .nextEvents__Item {
-    border: .1em dotted black;
+    border: 1px dotted black;
 
 }   
 .articlesList {
-    border: .2em solid black;
+    border: 1px solid black;
     display: flex;
+      height: 25%;
 }
 .articlesList__Item {
-    border: .1em dotted black;
-
+    border: 1px dotted black;
 }
 
 .messagesBoard {
-    border: .2em solid black;
+    border: 1px solid black;
+    height: 40%;
+}
+
+.messageList {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: scroll;
 }
 
 .messagesList__Item {
-border: .1em dotted black;
+border: 1px dotted black;
 }
 
 .eventsList {
-    border: .2em solid black;
+    border: 1px solid black;
     display: flex;
+    height: 35%;
 }
 
 .eventsList__Item {
-    border: .1em dotted black;
+    border: 1px dotted black;
 
 }
 
 .tasksList {
     display: flex;
-    border: .2em solid black;
+    border: 1px solid black;
 }
 .tasksList__Item {
-    border: .1em dotted black;
+    border: 1px dotted black;
 
 }
