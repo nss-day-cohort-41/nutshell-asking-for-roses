@@ -5,21 +5,28 @@ import forms from '../forms/allForms.js'
 
 const taskFunctions = {
 
-     //getting entry information back based on taskid, then pass the current task name and due date to it??
+    //getting entry information back based on taskid, then pass the current task name and due date to it??
     createEditedTask(taskEntryId) {
-        const taskInput = document.querySelector(".taskInput")
-        const dueDateInput = document.querySelector(".dueDateInput")
         fetch(`http://localhost:8088/tasks/${taskEntryId}`)
             .then(response => response.json())
-            .then(task => {
-                taskInput.value = task.name
-                dueDateInput.value = task.dueDate
-            })
+           .then((task) => {
+            const createEditedObject = (task) => {
+                const taskEditedObject = {
+                    "userId": task.userId,
+                    "name": task.name,
+                    "dueDate": task.dueDate,
+                    "completed": true
+                }
+                console.log(taskEditedObject)
+                return createEditedObject
+        
+            }
+           })
+
     },
     //add event listeners to task DELETE button
     taskEvents() {
-        
-           
+
         //delete task
         const deleteTaskButton = document.querySelector(".tasksList")
         deleteTaskButton.addEventListener("click", clickEvent => {
@@ -30,69 +37,47 @@ const taskFunctions = {
                 //invoke delete method from API module passing in task entry id
                 API.deleteTaskEntry(taskToDelete)
                     //get all entries again, render them to DOM
-                    .then(API.getTasksData())
-                    .then(renderToDom.tasksList(API.userTaskArray))
-            }
-            //edit task
-            if (event.target.id.startsWith("tasksListCompletedCheckbox--")) {
+                    .then(() => API.getTasksData())
+                    .then((array) => renderToDom.tasksList(array))
+                //edit    
+            } 
+        })
+
+    },
+
+    editTask() {
+        const editTaskButton = document.querySelector(".tasksList")
+        editTaskButton.addEventListener("click", clickEvent => {
+        if (event.target.id.startsWith("tasksListCompletedCheckbox--")) {
                 const taskToEdit = clickEvent.target.id.split("--")[1]
-                const checked = event.target.value
+                const checked = event.target.checked
+                console.log(checked.value)
+
                 if (checked) {
                     const taskInput = document.querySelector(".taskInput")
+                    console.log(taskInput.value)
                     const dueDateInput = document.querySelector(".dueDateInput")
-                    this.createEditedTask(taskToEdit);
-                    //FIXXXXX
-                    API.updateTaskCompletion(taskToEdit,  this.createEditedObject(taskInput.value, dueDateInput.value))  
+                    this.createEditedTask();
+
+                    API.updateTaskCompletion(taskToEdit, this.createEditedObject(taskInput.value, dueDateInput.value))
                 }
-                //popup form code below
-
-            } 
-            
-             //add event listener to add task button to OPEN popup modal
-             const addTaskButton = document.querySelector(".tasksAddButton")
-             addTaskButton.addEventListener("click", clickEvent => {
-             console.log('add task')
-             const hiddenTaskFormContainer = document.querySelector(".newTaskContainer")
-             hiddenTaskFormContainer.classList.toggle("hidden")
-             const popUpContainer = document.querySelector('.popupForm')
-             popUpContainer.classList.add('is-open')
-            
-            //  window.onload = () => {
-             //target cancel button and CLOSE popup modal
-             const cancelNewTask = document.querySelector("#cancelNewTask")
-             cancelNewTask.addEventListener("click", clickEvent => {
-              console.log("cancel button working")
-              popUpContainer.classList.remove('is-open')
-             
+                
            
-             })
-           
-            //save functionality on SUBMIT button on popup form and POST in databse and display
-            const saveNewTaskButton = document.getElementById("submitNewTask")
-            saveNewTaskButton.addEventListener("click", clickEvent => {
-            const taskInput = document.querySelector(".taskInput")
-            const dueDateInput = document.querySelector(".dueDateInput")
-            const generateTaskFormData = createTaskFormObject(name, dueDate, completed)
-            API.newTasksEntry(generateTaskFormData(taskInput.value, dueDateInput.value, completed))
-            .then(API.fetchUsers("http://localhost:8088/tasks"))
-            .then(renderToDom.tasksList(API.userTaskArray))
+            }
         })
-    // }
-         }) 
-        
-
-            })
-       
-    
-},
-      
-    createEditedObject (name, dueDate, completed = true) {
-        const taskObject = {
+    },
+      // this is the edited to change complete to true in database object
+   
+    //this is task form object that will be POSTED and displayed on DOM
+    createTaskFormObject (name, dueDate, completed = false) {
+        const taskFormObject = {
+            userId: parseInt(sessionStorage.getItem("currentUser")),
             name,
             dueDate,
             completed
+            
         }
-        return taskObject
+        return taskFormObject
     }
      
 }

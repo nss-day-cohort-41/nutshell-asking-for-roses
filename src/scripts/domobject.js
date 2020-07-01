@@ -28,9 +28,9 @@ const domObject = {
         <section class="tasksList__Item">
                     <div class="tasksList__Item__Content">
                         <label for="tasksListCompletedCheckbox">Completed</label>
-                        <input type="checkbox" id="tasksListCompletedCheckbox--${taskObject.id}">
+                        <input type="checkbox" value="false" id="tasksListCompletedCheckbox--${taskObject.id}">
                         <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
-                        <p class="tasksList__Item__Input">${taskObject.name}e</p>
+                        <p class="tasksList__Item__Input">${taskObject.name}</p>
                     </div>
                         
                     <div>

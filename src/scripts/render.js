@@ -79,6 +79,7 @@ const renderToDom = {
         console.log(incompleteTasks)
         const sortedTasks = incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
         console.log(sortedTasks)
+        document.querySelector(".tasksList").innerHTML = ""
         for (const task of sortedTasks) {
             const taskHTML = domObject.taskComponent(task)
             const taskElement = document.querySelector(".tasksList")

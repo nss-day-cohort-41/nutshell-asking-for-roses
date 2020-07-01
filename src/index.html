@@ -226,15 +226,15 @@
 
             <!-- TASKS LISTS -->
             <div class="bottomContainer">
-                <article class="tasksList">
-                    <!-- TASKS LIST HEADING -->
-                    <div class="tasksList__Heading">
-                        <h2>"TASKS LIST Dont forget to Bring a Towel" (to complete your tasks)</h2>
-                    </div>
-                    <!-- ADD TASKS BUTTON-->
+                <div class="tasksList__Heading">
+                    <h2>"TASKS LIST Dont forget to Bring a Towel" (to complete your tasks)</h2>
                     <div>
                         <button type="button" class="tasksAddButton">Add Task Button</button>
                     </div>
+                </div>
+                <article class="tasksList">
+                    <!-- TASKS LIST HEADING -->
+                    <!-- ADD TASKS BUTTON-->
 
                     <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                     <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
@@ -247,9 +247,9 @@
                     <div class="showPopupContent">
                     <form class="newTaskForm">
                         <label for="newTaskDueDate">Enter New Task</label>
-                        <input id="newTaskName" class="taskInput" type="text" required></input>
+                        <input id="newTaskName" class="taskInput" type="text"></input>
                         <label for="newTaskDueDate">Date to be Completed</label>
-                        <input id="newTaskDueDate" class="dueDateInput" type="date" placeholder="Date to be Completed" required></input>
+                        <input id="newTaskDueDate" value="yyyy-MM-dd" class="dueDateInput" type="date"></input>
                         <button id="submitNewTask" type="button">Save</button>
                         <button id="cancelNewTask" type="button">Cancel</button>
                     </form>

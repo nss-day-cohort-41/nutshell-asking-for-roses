@@ -30,7 +30,9 @@ const API = {
     async fetchUsers(endpoint) {
     const res = await fetch(endpoint);
     let data = await res.json();
+    data.filter(tasks => tasks.userId)
     this.userTaskArray = data
+    console.log(this.userTaskArray)
   },
 
     // Tasha Lane created API fetch calls

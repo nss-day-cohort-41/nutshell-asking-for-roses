@@ -1,7 +1,8 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
-import forms from './forms.js';
+import forms from '../scripts/forms/allForms.js'
 import taskFunctions from '../scripts/tasks/taskButtons.js';
+import tasksButtonFunctionality from "./tasks/taskButtonEvents.js";
 
 /* File created/refactored by David Larsen
     Original "load dashboard" code by Brett Stoudt
@@ -14,19 +15,33 @@ const loadDashboard = () => {
     registrationContainer.classList.toggle("hidden")
     hiddenDashboard.classList.toggle("hidden")
     
-    // Load individual delete functions
-    //invoke add, delete, edit functionality for task buttons
-    taskFunctions.taskEvents();
+   
+    //invoking task functions
+   
     
     
     // Load individual data components
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
-    API.fetchUsers("http://localhost:8088/tasks").then(() => renderToDom.tasksList(API.userTaskArray))
+    API.getTasksData().then((array) => {
+    renderToDom.tasksList(array)})
+    .then(() => {
+        tasksButtonFunctionality()
+        taskFunctions.taskEvents()
+        taskFunctions.editTask()
+    }
+    )
+    
+    
+
+    
+
     renderToDom.eventsList()
     renderToDom.articlesList()
 
-     
-     //Loading form components
+    // Load individual delete functions
+    //invoke add, delete, edit functionality for task buttons
+    
+    //Loading form components
     //  forms.renderingTaskForm();
     // forms.renderingEventForm();
     // forms.renderingArticleForm();
