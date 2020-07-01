@@ -23,20 +23,16 @@ const API = {
             body: JSON.stringify(userObj)
         })
     },
-    //entered trial code for async/await (delete below if not working!)
+    // async/await fetch
+    //array to pass the fetched task objects from database 
     userTaskArray: [],
-    
+
     async fetchUsers(endpoint) {
     const res = await fetch(endpoint);
     let data = await res.json();
-  
-    // data = data.map(user => user.username);
     this.userTaskArray = data
-  
   },
-//   end trial code
-  
-  
+
     // Tasha Lane created API fetch calls
 
     getArticlesData: () => {
@@ -48,10 +44,10 @@ const API = {
             .then(events => events.json())
     },
 
-    // getTasksData: () => {
-    //     return fetch("http://localhost:8088/tasks")
-    //         .then(tasks => tasks.json())
-    // },
+    getTasksData: () => {
+        return fetch("http://localhost:8088/tasks")
+            .then(tasks => tasks.json())
+    },
     getFriendsData: () => {
         return fetch("http://localhost:8088/friends")
             .then(friends => friends.json())
@@ -64,7 +60,7 @@ const API = {
 
 
     newArticlesEntry: (articlesObject) => {
-        return fetch("http://localhost:8808/articles", {
+        return fetch("http://localhost:8088/articles", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -74,7 +70,7 @@ const API = {
     },
 
     newEventsEntry: (eventsObject) => {
-        return fetch("http://localhost:8808/events", {
+        return fetch("http://localhost:8088/events", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,7 +80,7 @@ const API = {
     },
 
     newTasksEntry: (tasksObject) => {
-        return fetch("http://localhost:8808/tasks", {
+        return fetch("http://localhost:8088/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +90,7 @@ const API = {
     },
 
     newFriendsEntry: (friendsObject) => {
-        return fetch("http://localhost:8808/friends", {
+        return fetch("http://localhost:8088/friends", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -103,7 +99,7 @@ const API = {
         });
     },
     newMessagesEntry: (messagesObject) => {
-        return fetch("http://localhost:8808/messages", {
+        return fetch("http://localhost:8088/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -115,11 +111,21 @@ const API = {
 
     // Sisi (delete for task)
     deleteTaskEntry (taskEntryId) {
-        return fetch(`http://localhost:8808/tasks/${taskEntryId}`, {
+        return fetch(`http://localhost:8088/tasks/${taskEntryId}`, {
             method: "DELETE"
         })
-        .then(response => response. json())
-    }
+        .then(response => response.json())
+    },
+    //edit completed property
+    updateTaskCompletion (taskEntryId, taskObject) {
+        return fetch(`http://localhost:8088/tasks/${taskEntryId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(taskObject)
+            })
+        }
 
 }
 export default API

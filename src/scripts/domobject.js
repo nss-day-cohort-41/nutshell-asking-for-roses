@@ -27,13 +27,14 @@ const domObject = {
         const taskHTMLRepresentation = `
         <section class="tasksList__Item">
                     <div class="tasksList__Item__Content">
-                        <input type="checkbox" id="tasksListCompletedCheckbox">
+                        <label for="tasksListCompletedCheckbox">Completed</label>
+                        <input type="checkbox" id="tasksListCompletedCheckbox--${taskObject.id}">
                         <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
                         <p class="tasksList__Item__Input">${taskObject.name}e</p>
                     </div>
                         
                     <div>
-                        <button type="button" class="tasksDeleteButton--${taskObject.id}">Delete Task Button</button>
+                        <button type="button" id="tasksDeleteButton--${taskObject.id}">Delete Task Button</button>
                     </div>
         </section>
         `

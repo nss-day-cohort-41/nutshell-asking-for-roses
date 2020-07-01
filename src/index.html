@@ -51,10 +51,7 @@
 
             </section>
         </main>
-        <!-- delete below if not working -->
-        <div class="try"></div>
         
-       
     </article>
 
     <!-- DASHBOARD CONTAINER -->
@@ -242,17 +239,25 @@
                     <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                     <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
                     <!-- SINGLE TASKS LIST ITEM, SHOULD CHECKBOX INPUT BE IN A FORM? -->
-                   
-                    
+
                 </article>
             </div>
-        </main>
-    </article>
-   
+                <!-- Tasks Form will initially be hidden -->
+                <div class="newTaskContainer popupForm" class="hidden">
+                    <form class="newTaskForm">
+                        <input id="newTaskName" class="taskInput" type="text" placeholder="Enter New Task" required></input>
+                        <input id="newTaskDueDate" class="dueDateInput" type="date" placeholder="Date to be Completed" required></input>
+                        <button class="sumbitNewTask" type="button">Save</button>
+                        <button class="cancelNewTask" type="button">Cancel</button>
+                    </form>
+                </div>
+            </main>
+        </article>
+                
     <footer>&copy 2020 Asking For Roses</footer>
-
+                
     <script type="module" src="scripts/main.js"></script>
-
+                
 </body>
-
+                
 </html>

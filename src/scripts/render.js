@@ -35,27 +35,6 @@ const renderToDom = {
             taskElement.innerHTML += taskHTML
         }
 
-        
-
-
-        // // Separate and sort with completed items at the top of the list, then sorted in order by due date
-        // const completeTasks = tasksArray.filter(task => {return task.completed === true})
-        // const incompleteTasks = tasksArray.filter(task => {return task.completed === false})
-
-        // completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
-        // incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
-
-        // console.log(completeTasks) // Remove this line later
-        // console.log(incompleteTasks) // Remove this line later
-        // completeTasks.forEach(task => {
-        //     const taskHTML = domObject.taskComponent(task)
-        //     // document.querySelector(".tasksList").innerHTML += taskHTML
-        // })
-        // incompleteTasks.forEach(task => {
-        //     const taskHTML = domObject.taskComponent(task)
-        //     // document.querySelector(".tasksList").innerHTML += taskHTML
-        // })
-
 
     },
     // end Sisi (tasks)

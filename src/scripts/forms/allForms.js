@@ -3,10 +3,11 @@ import renderToDom from '../render.js'
 
 //creating form objects for tasks, events, and articles to render user input to DOM
 const forms = {
-     createTaskFormObject (name, dueDate) {
+     createTaskFormObject (name, dueDate, completed) {
         const taskFormObject = {
             name,
             dueDate,
+            completed
         }
         return taskFormObject
     },
@@ -41,7 +42,7 @@ const forms = {
             API.newTasksEntry(generateTaskFormData(taskInput.value, dueDateInput.value))
             .then(() => API.getTasksData())
             //?
-            .then(renderToDom.tasksList())
+            .then(renderToDom.tasksList(API.userTaskArray))
         })
 
         const cancelNewTask = document.querySelector(".cancelNewTask")
