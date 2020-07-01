@@ -36,7 +36,17 @@ const loadDashboard = () => {
         .then(API.getArticlesData)
         .then((response) => renderToDom.articlesList(response))      
       } 
+      
+      
     })
+    const articlesListAddButton = document.querySelector("#articlesAddButton")
+    const hiddenArticlesForm = document.querySelector(".newArticleContainer")
+    articlesListAddButton.addEventListener("click", (event) => {
+      hiddenArticlesForm.classList.toggle("hidden");
+      console.log("add articles button clicked");
+      })
+      
+    
     
 
 
@@ -51,9 +61,9 @@ const loadDashboard = () => {
   }
   //Event Listener for Articles Save & Cancel Button on New Article Form
   //Created by Brett Stoudt
-  const NewArticlePopup = document.querySelector(".articleFormPopup")
+  const NewArticlePopup = document.querySelector(".newArticleForm")
   
-  NewArticlePopup.addEventListener("click", event => {
+  NewArticlePopup.addEventListener("click", (event) => {
     
     const articleURL = document.getElementById("articleURL").value
     const articleTitle = document.getElementById("articleTitle").value

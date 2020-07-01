@@ -140,18 +140,33 @@
                 <!-- COLUMN RIGHT HOLDS ARTICLES LIST, MESSAGE BOARDS AND REAMINING EVENTS LIST -->
                 <div class="columnRight">
                     <!-- ARTICLE LIST -->
-                    <article class="articlesList">
-                        <div class=articleList__Heading>
-                            <h2>NEWS ARTICLES to Expand your Mind</h2>
-                        </div>
+                    <div class=articleList__Heading>
+                        <h2>NEWS ARTICLES to Expand your Mind</h2>
                         <!-- ADD ARTICLES BUTTON -->
                         <div>
-                            <button type="button" class="articlesAddButton">Add Article Button</button>
+                        <button type="button" id="articlesAddButton">Add Article Button</button>
                         </div>
+                    </div>
+                    <article class="articlesList">
+                        
+
                         <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                         <!-- THIS REMAINING SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
                     </article>
-                    
+                     <!-- Tasks Form will initially be hidden -->
+                <div class="newArticleContainer popupForm hidden">
+                    <div class="showPopupContent">
+                    <form class="newArticleForm">
+                        <label for="newArticleDueDate">Enter New Task</label>
+                        <input id="newTaskName" class="taskInput" type="text" required></input>
+                        <label for="newTaskDueDate">Date to be Completed</label>
+                        <input id="newTaskDueDate" class="dueDateInput" type="date" placeholder="Date to be Completed" required></input>
+                        <button id="submitNewTask" type="button">Save</button>
+                        <button id="cancelNewTask" type="button">Cancel</button>
+                    </form>
+                    </div>
+                </div>
+
                     <!-- MESSAGING BOARD -->
                     <div class="messagesBoard">
                         <!-- MESSAGING BOARD HEADER -->
