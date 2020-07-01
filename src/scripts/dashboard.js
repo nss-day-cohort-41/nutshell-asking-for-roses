@@ -1,5 +1,6 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
+import articlesListeners from "./articles.js"
 
 /* File created/refactored by David Larsen
     Original "load dashboard" code by Brett Stoudt
@@ -18,27 +19,7 @@ const loadDashboard = () => {
     renderToDom.eventsList()
     API.getArticlesData().then(articlesCollection => renderToDom.articlesList(articlesCollection))
 
-    //Articles Delete Button Click Event Listener
-    const articlesList = document.querySelector(".articlesList")
-        articlesList.addEventListener("click", (event) => {
-          if (event.target.id.startsWith("articlesDeleteButton--")) {
-            console.log("delete button clicked");
-            const articleIdToDelete = event.target.id.split("--")[1];
-            console.log("delete id", articleIdToDelete);
-            API.deleteArticleEntry(articleIdToDelete);
-          }
-
-        });
-           //Articles Add Button Click Event Listener
-    const articlesList = document.querySelector(".articlesList")
-    articlesList.addEventListener("click", (event) => {
-      if (event.target.id.startsWith("articlesDeleteButton--")) {
-        console.log("delete button clicked");
-        const articleIdToDelete = event.target.id.split("--")[1];
-        console.log("delete id", articleIdToDelete);
-        API.deleteArticleEntry(articleIdToDelete);
-      }
-    });
+    articlesListeners.articlesList()
 }
 
 export default loadDashboard
