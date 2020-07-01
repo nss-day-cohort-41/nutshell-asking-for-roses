@@ -49,9 +49,8 @@ const API = {
             .then(messages => messages.json())
     },
 
-
     newArticlesEntry: (articlesObject) => {
-        return fetch("http://localhost:8808/articles", {
+        return fetch("http://localhost:8088/articles", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +60,7 @@ const API = {
     },
 
     newEventsEntry: (eventsObject) => {
-        return fetch("http://localhost:8808/events", {
+        return fetch("http://localhost:8088/events", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +70,7 @@ const API = {
     },
 
     newTasksEntry: (tasksObject) => {
-        return fetch("http://localhost:8808/tasks", {
+        return fetch("http://localhost:8088/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -81,7 +80,7 @@ const API = {
     },
 
     newFriendsEntry: (friendsObject) => {
-        return fetch("http://localhost:8808/friends", {
+        return fetch("http://localhost:8088/friends", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,15 +89,23 @@ const API = {
         });
     },
     newMessagesEntry: (messagesObject) => {
-        return fetch("http://localhost:8808/messages", {
+        return fetch("http://localhost:8088/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(messagesObject),
-        
+        });
+    },
+
+    editMessage: (messageObject, messageId) => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageObject)
         });
     }
-
 }
 export default API
