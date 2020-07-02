@@ -55,6 +55,8 @@ const renderToDom = {
             const taskHTML = domObject.taskComponent(task)
             // document.querySelector(".tasksList").innerHTML += taskHTML
         })
+
+
 },
 
     eventsList(eventsArray) {
@@ -83,14 +85,17 @@ const renderToDom = {
         const hiddenEventsForm = document.querySelector(".newEventContainer")
         const addEventsButton = document.querySelector(".eventsAddButton");
         const saveEventButton = document.querySelector(".submitEventButton");
+        const cancelEventButton = document.querySelector(".cancelEventButton");
         addEventsButton.addEventListener("click", (clickEvent) => {
             hiddenEventsForm.classList.toggle("hidden");
-            saveEventButton.addEventListener("click", (clickEvent) => {
-                hiddenEventsForm.classList.toggle("hidden");
+        saveEventButton.addEventListener("click", (clickEvent) => {
+            hiddenEventsForm.classList.toggle("hidden");
+        
+            
             
                 // Save new events
 
-                document.querySelector("#submitEventButton").addEventListener("click", (event) => {
+                document.querySelector(".submitEventButton").addEventListener("click", (event) => {
                     let eventInput = document.getElementById("eventInput").value
                     let eventsId = document.getElementById("eventsId").value
                     const eventsToSave = createEventObject(eventInput)
@@ -129,4 +134,6 @@ const renderToDom = {
     }
 
 }
+
+
 export default renderToDom
