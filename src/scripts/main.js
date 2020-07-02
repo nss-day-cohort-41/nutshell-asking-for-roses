@@ -21,3 +21,4 @@ userLogOutRequest.addEventListener("click", event => {
     hiddenDashboard.classList.toggle("hidden")
     sessionStorage.clear()
 })
+

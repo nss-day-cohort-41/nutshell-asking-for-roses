@@ -59,8 +59,29 @@ const renderToDom = {
 
     },
 
+<<<<<<< HEAD
     eventsList(eventsArray) {
         
+=======
+    eventsList() {
+        // **TEST DATA - delete later
+        const eventsArray = [{
+            "id": 1,
+            "userId": 1,
+            "name": "first event ever ",
+            "location": "nextEvents section",
+            "eventDate": "01/01/01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "name": "2nd event to ever take place ",
+            "location": "1st event in the events list",
+            "eventDate": "02/02/02"
+          }]
+        // **
+
+>>>>>>> master
         eventsArray.sort((event1, event2) => new Date(event2.date) - new Date(event1.date))
         //below resets the list
         document.querySelector(".eventsList").innerHTML = "";
@@ -113,6 +134,7 @@ const renderToDom = {
 
     },
 
+<<<<<<< HEAD
     
                     
 
@@ -153,6 +175,18 @@ const renderToDom = {
                 document.querySelector(".articlesList").innerHTML += articleHTML
             })
         },
+=======
+    //ARTICLE LIST MAKER 
+    //created by Brett Stoudt
+    articlesList(articlesArray) {
+            articlesArray.sort((article1, article2) => article2.timestamp - article1.timestamp)
+            document.querySelector(".articlesList").innerHTML = ""
+            articlesArray.forEach(article => {
+                const articleHTML = domObject.articleComponent(article)
+                document.querySelector(".articlesList").innerHTML += articleHTML
+            })
+    },
+>>>>>>> master
 
             friendsList() {
   
