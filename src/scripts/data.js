@@ -50,8 +50,9 @@ const API = {
         return fetch("http://localhost:8088/tasks")
             .then(tasks => tasks.json())
     },
-    getFriendsData: () => {
-        return fetch("http://localhost:8088/friends")
+    // Get friends data. Tasha Lane and David Larsen
+    getFriendsData: (currentUserId) => {
+        return fetch(`http://localhost:8088/friends?followingId=${currentUserId}&_expand=user`)
             .then(friends => friends.json())
     },
 
@@ -99,6 +100,14 @@ const API = {
             body: JSON.stringify(friendsObject),
         });
     },
+
+    // Delete friend entry by David Larsen
+    deleteFriendEntry: (friendId) => {
+        return fetch(`http://localhost:8088/friends/${friendId}`, {
+            method: "DELETE"
+        })
+    },
+
     newMessagesEntry: (messagesObject) => {
         return fetch("http://localhost:8088/messages", {
             method: "POST",
@@ -107,6 +116,14 @@ const API = {
             },
             body: JSON.stringify(messagesObject),
         });
+    },
+     //responsible for running after the delete button is clicked
+         //created by Brett Stoudt
+     deleteArticleEntry: (id) => {
+        return fetch(`http://localhost:8088/articles/${id}`, {
+            method: "DELETE",
+        }).then(response => response.json())
+            .then(response => response)
     },
 
     // Sisi (delete for task)
@@ -127,6 +144,7 @@ const API = {
             })
         },
 
+    // Edit message call by David Larsen
     editMessage: (messageObject, messageId) => {
         return fetch(`http://localhost:8088/messages/${messageId}`, {
             method: "PUT",

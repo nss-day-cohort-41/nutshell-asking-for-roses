@@ -11,14 +11,13 @@ const tasksButtonFunctionality = () => {
         console.log('add task')
         const hiddenTaskFormContainer = document.querySelector(".newTaskContainer")
         hiddenTaskFormContainer.classList.toggle("hidden")
-        const popUpContainer = document.querySelector('.popupForm')
-        popUpContainer.classList.add('is-open')
+        hiddenTaskFormContainer.classList.add('is-open')
 
         //target cancel button and CLOSE popup modal (working)
         const cancelNewTask = document.querySelector("#cancelNewTask")
         cancelNewTask.addEventListener("click", clickEvent => {
             console.log("cancel button working")
-            popUpContainer.classList.remove('is-open')
+            hiddenTaskFormContainer.classList.remove('is-open')
 
         })
     })
@@ -36,8 +35,8 @@ const tasksButtonFunctionality = () => {
         document.querySelector(".tasksList").innerHTML = ""
         taskInput.value = ""
         dueDateInput.value = ""
-        const popUpContainer = document.querySelector('.popupForm')
-        popUpContainer.classList.remove('is-open')
+        const hiddenTaskFormContainer = document.querySelector(".newTaskContainer")
+        hiddenTaskFormContainer.classList.remove('is-open')
 
     })
 
