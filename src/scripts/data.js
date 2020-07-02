@@ -98,6 +98,14 @@ const API = {
             body: JSON.stringify(messagesObject),
         });
     },
+     //responsible for running after the delete button is clicked
+         //created by Brett Stoudt
+     deleteArticleEntry: (id) => {
+        return fetch(`http://localhost:8088/articles/${id}`, {
+            method: "DELETE",
+        }).then(response => response.json())
+            .then(response => response)
+    },
 
     // Edit message call by David Larsen
     editMessage: (messageObject, messageId) => {

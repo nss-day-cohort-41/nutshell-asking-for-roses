@@ -62,15 +62,19 @@ const renderToDom = {
     eventsList() {
         // **TEST DATA - delete later
         const eventsArray = [{
-            name: "test1",
-            date: "2020-06-05"
-        }, {
-            name: "test2",
-            date: "2020-05-04"
-        }, {
-            name: "test3",
-            date: "2020-06-21"
-        }]
+            "id": 1,
+            "userId": 1,
+            "name": "first event ever ",
+            "location": "nextEvents section",
+            "eventDate": "01/01/01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "name": "2nd event to ever take place ",
+            "location": "1st event in the events list",
+            "eventDate": "02/02/02"
+          }]
         // **
 
         eventsArray.sort((event1, event2) => new Date(event2.date) - new Date(event1.date))
@@ -81,42 +85,15 @@ const renderToDom = {
         })
     },
 
-    articlesList() {
-        // **TEST DATA - delete later
-        const articlesArray = [
-            {
-                "id": 1,
-                "userId": 1,
-                "url": "www.google.com",
-                "title": "actionNews 1",
-                "synopsis": "Ron Tucker did this",
-                "dateOfNews": "01/01/01"
-              },
-              {
-                "id": 2,
-                "userId": 2,
-                "url": "www.google.com",
-                "title": "actionNews 2",
-                "synopsis": "Ron Burgendy is legend",
-                "dateOfNews": "02/02/02"
-              },
-              {
-                "id": 3,
-                "userId": 3,
-                "url": "www.google.com",
-                "title": "actionNews 3",
-                "synopsis": "Billy Madison ran over a penguin!!",
-                "dateOfNews": "03/03/03"
-              }
-            ]
-        // **
-
-        articlesArray.sort((article1, article2) => new Date(article2.date) - new Date(article1.date))
-        console.log(articlesArray) // Remove this line later
-        articlesArray.forEach(article => {
-            const articleHTML = domObject.articleComponent(article)
-            document.querySelector(".articlesList").innerHTML += articleHTML
-        })
+    //ARTICLE LIST MAKER 
+    //created by Brett Stoudt
+    articlesList(articlesArray) {
+            articlesArray.sort((article1, article2) => article2.timestamp - article1.timestamp)
+            document.querySelector(".articlesList").innerHTML = ""
+            articlesArray.forEach(article => {
+                const articleHTML = domObject.articleComponent(article)
+                document.querySelector(".articlesList").innerHTML += articleHTML
+            })
     },
 
     friendsList() {
