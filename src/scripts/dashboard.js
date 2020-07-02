@@ -35,14 +35,6 @@ const loadDashboard = () => {
     })
 
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
-    API.getTasksData().then((array) => {
-    renderToDom.tasksList(array)})
-    .then(() => {
-        tasksButtonFunctionality()
-        taskFunctions.taskEvents()
-        taskFunctions.editTask()
-    })
-    
     .then(() => {
         // Save new message
 
