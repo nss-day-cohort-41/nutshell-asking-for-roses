@@ -85,7 +85,8 @@ const renderToDom = {
         })
     },
 
-    //ARTICLE LIST MAKER created by Brett Stoudt
+    //ARTICLE LIST MAKER 
+    //created by Brett Stoudt
     articlesList(articlesArray) {
             articlesArray.sort((article1, article2) => article2.timestamp - article1.timestamp)
             document.querySelector(".articlesList").innerHTML = ""

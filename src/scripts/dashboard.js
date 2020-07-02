@@ -67,12 +67,12 @@ const loadDashboard = () => {
     })
     renderToDom.tasksList()
     renderToDom.eventsList()
+    
     API.getArticlesData().then(articlesCollection => renderToDom.articlesList(articlesCollection))
     
     //Articles Delete Button
     //created by Brett Stoudt
     const articlesListDeleteButton = document.querySelector(".articlesList")
-
 
     articlesListDeleteButton.addEventListener("click", (event) => {
    
@@ -85,18 +85,15 @@ const loadDashboard = () => {
         .then((response) => renderToDom.articlesList(response))      
       } 
       
-      
     })
+    //Article Add Button to load user input form
+    //Created by Brett Stoudt
     const articlesListAddButton = document.querySelector("#articlesAddButton")
     const hiddenArticlesForm = document.querySelector(".newArticleContainer")
     articlesListAddButton.addEventListener("click", (event) => {
       hiddenArticlesForm.classList.toggle("hidden");
       console.log("add articles button clicked");
       })
-      
-    
-    
-
 
     //when invoked, this function resets the article inputs by referencing the ID and reseting the value, 
     //currently used in article form popup inside the article submit Button and article cancel Button event listeners.
@@ -110,11 +107,12 @@ const loadDashboard = () => {
   const NewArticleSave = document.querySelector("#submitNewArticle")
   
   NewArticleSave.addEventListener("click", (event) => {
-    //event.preventDefault()
+    
     const articleURL = document.getElementById("newArticleURL").value
     const articleTitle = document.getElementById("newArticleTitle").value
     const articleSynopsis = document.getElementById("newArticleSynopsis").value
-    //Article Submit Button 
+    //Article Form Submit Button 
+    //Created by Brett Stoudt
     if (event.target.id = document.querySelector("#submitNewArticle")) {
       console.log("save button clicked");
 
@@ -150,6 +148,7 @@ const loadDashboard = () => {
     } 
   
   })  
+  //Article Form Cancel Button
   const cancelNewArticle = document.querySelector("#cancelNewArticle")
   cancelNewArticle.addEventListener("click", clickEvent => {
     hiddenArticlesForm.classList.toggle("hidden");

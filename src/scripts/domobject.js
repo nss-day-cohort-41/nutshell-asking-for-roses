@@ -31,12 +31,9 @@ const domObject = {
 
     },
 
+    //Article HTML Generator
+    //Created by Brett Stoudt
     articleComponent(articleObject) {
-        // let notCurrentUser = ""
-
-        // if (articleObject.userId != parseInt(sessionStorage.getItem("currentUser"))) {
-        //     notCurrentUser = 
-        // } 
         const articleElement =
         `
             <section class="articlesList__Item">
