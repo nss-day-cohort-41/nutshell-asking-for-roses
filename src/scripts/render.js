@@ -121,9 +121,13 @@ const renderToDom = {
 
     // friendsList function by David Larsen
     friendsList(friendsArray) {
+
+        const friendsListDOM = document.querySelector(".friendsList")
+        // Clear the friends list
+        friendsListDOM.innerHTML = ""
         friendsArray.forEach(friend => {
             const friendHTML = domObject.friendComponent(friend)
-            document.querySelector(".friendsList").innerHTML += friendHTML
+            friendsListDOM.innerHTML += friendHTML
         })
     }
 }
