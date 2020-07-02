@@ -58,7 +58,7 @@ const domObject = {
                 <p>${friendObject.user.username}
             <!-- SINGLE FRIENDS DELETE BUTTON -->
             <div>
-                <button type="button" class="dashboardButton" id="friendDelete--${friendObject.id}">Delete Friend</button>
+                <button type="button" class="dashboardButton" id="deleteFriend--${friendObject.id}">Delete Friend</button>
             </div>
             </section>`
     }

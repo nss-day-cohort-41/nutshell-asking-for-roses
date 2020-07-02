@@ -18,6 +18,20 @@ const loadDashboard = () => {
     // Load individual data components
     API.getFriendsData(currentUserID)
     .then((friendsList) => renderToDom.friendsList(friendsList))
+    .then(() => {
+        document.querySelector(".friendsList").addEventListener("click", event => {
+            if (event.target.id.startsWith("--")) {
+                const entryIdToEdit = event.target.id.split("--")[1]
+                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
+                    .then(response => response.json())
+                    .then(entry => {
+                        document.getElementById("messagesUserInput").value = entry.message
+                        document.getElementById("messageId").value = entry.id
+                    })
+            }
+        })
+    }
+
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     .then(() => {
         // Save new message
