@@ -68,8 +68,6 @@ const loadDashboard = () => {
     renderToDom.tasksList()
     renderToDom.eventsList()
     API.getArticlesData().then(articlesCollection => renderToDom.articlesList(articlesCollection))
-
-
     
     //Articles Delete Button
     //created by Brett Stoudt
@@ -143,6 +141,7 @@ const loadDashboard = () => {
           })
           .then((allArticleObjectsFromAPI) => {
             clearInputs()
+            hiddenArticlesForm.classList.toggle("hidden");
             return renderToDom.articlesList(allArticleObjectsFromAPI)
           })   
         } 
