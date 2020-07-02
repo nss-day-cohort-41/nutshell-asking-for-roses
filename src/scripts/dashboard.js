@@ -66,6 +66,7 @@ const loadDashboard = () => {
             }
         })
     })
+
     renderToDom.tasksList()
     API.getEventsData().then(eventsLog => renderToDom.eventsList(eventsLog))
     renderToDom.articlesList()
