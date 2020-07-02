@@ -51,7 +51,7 @@
 
             </section>
         </main>
-       
+        
     </article>
 
     <!-- DASHBOARD CONTAINER -->
@@ -209,64 +209,43 @@
 
             <!-- TASKS LISTS -->
             <div class="bottomContainer">
-                <article class="tasksList">
-                    <!-- TASKS LIST HEADING -->
-                    <div class="tasksList__Heading">
-                        <h2>"TASKS LIST Dont forget to Bring a Towel" (to complete your tasks)</h2>
-                    </div>
-                    <!-- ADD TASKS BUTTON-->
+                <div class="tasksList__Heading">
+                    <h2>"TASKS LIST Dont forget to Bring a Towel" (to complete your tasks)</h2>
                     <div>
                         <button type="button" class="tasksAddButton">Add Task Button</button>
                     </div>
+                </div>
+                <article class="tasksList">
+                    <!-- TASKS LIST HEADING -->
+                    <!-- ADD TASKS BUTTON-->
 
                     <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                     <!-- THIS SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
                     <!-- SINGLE TASKS LIST ITEM, SHOULD CHECKBOX INPUT BE IN A FORM? -->
-                    <section class="tasksList__Item">
-                        <!-- SINGLE TASK DETAILS -->
-                        <div class="tasksList__Item__Content">
-                            <input type="checkbox" id="tasksListCompletedCheckbox">
-                            <p class="tasksList__Item__DueDate">12.12.12</p>
-                            <p class="tasksList__Item__Input">Task Description Lives Here</p>
-                        </div>
-                        <!-- SINGLE TASK DELETE BUTTON -->
-                        <div>
-                            <button type="button" class="tasksDeleteButton">Delete Task Button</button>
-                        </div>
-                    </section>
-                    <section class="tasksList__Item">
-                        <!-- SINGLE TASK DETAILS -->
-                        <div class="tasksList__Item__Content">
-                            <input type="checkbox" id="tasksListCompletedCheckbox">
-                            <p class="tasksList__Item__DueDate">12.12.12</p>
-                            <p class="tasksList__Item__Input">Task Description Lives Here</p>
-                        </div>
-                        <!-- SINGLE TASK DELETE BUTTON -->
-                        <div>
-                            <button type="button" class="tasksDeleteButton">Delete Task Button</button>
-                        </div>
-                    </section>
-                    <section class="tasksList__Item">
-                        <!-- SINGLE TASK DETAILS -->
-                        <div class="tasksList__Item__Content">
-                            <input type="checkbox" id="tasksListCompletedCheckbox">
-                            <p class="tasksList__Item__DueDate">12.12.12</p>
-                            <p class="tasksList__Item__Input">Task Description Lives Here</p>
-                        </div>
-                        <!-- SINGLE TASK DELETE BUTTON -->
-                        <div>
-                            <button type="button" class="tasksDeleteButton">Delete Task Button</button>
-                        </div>
-                    </section>
+
                 </article>
             </div>
-        </main>
-    </article>
-   
+                <!-- Tasks Form will initially be hidden -->
+                <div class="newTaskContainer popupForm" class="hidden">
+                    <div class="showPopupContent">
+                    <form class="newTaskForm">
+                        <label for="newTaskDueDate">Enter New Task</label>
+                        <input id="newTaskName" class="taskInput" type="text"></input>
+                        <label for="newTaskDueDate">Date to be Completed</label>
+                        <input id="newTaskDueDate" value="yyyy-MM-dd" class="dueDateInput" type="date"></input>
+                        <button id="submitNewTask" type="button">Save</button>
+                        <button id="cancelNewTask" type="button">Cancel</button>
+                    </form>
+                    </div>
+                </div>
+            </main>
+        </article>
+       
+                
     <footer>&copy 2020 Asking For Roses</footer>
-
+                
     <script type="module" src="scripts/main.js"></script>
-
+                
 </body>
-
+                
 </html>

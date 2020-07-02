@@ -21,43 +21,26 @@ const renderToDom = {
 
     },
 
-    tasksList() {
-        // **TEST DATA - delete later
-        const tasksArray = [{
-            name: "test1",
-            dueDate: "2020-06-05",
-            completed: false
-        }, {
-            name: "test2",
-            dueDate: "2020-05-04",
-            completed: true
-        }, {
-            name: "test3",
-            dueDate: "2020-06-21",
-            completed: false
-        }]
-        // **
+    //Sisi (tasks)
 
-        // Separate and sort with completed items at the top of the list, then sorted in order by due date
-        const completeTasks = tasksArray.filter(task => {return task.completed === true})
-        const incompleteTasks = tasksArray.filter(task => {return task.completed === false})
+    tasksList(tasksArray) {
 
-        completeTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
-        incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
-
-        console.log(completeTasks) // Remove this line later
-        console.log(incompleteTasks) // Remove this line later
-        completeTasks.forEach(task => {
-            const taskHTML = domObject.taskComponent(task)
-            // document.querySelector(".tasksList").innerHTML += taskHTML
+        const incompleteTasks = tasksArray.filter(task => {
+            return task.completed === false
         })
-        incompleteTasks.forEach(task => {
+        console.log(incompleteTasks)
+        const sortedTasks = incompleteTasks.sort((task1, task2) => new Date(task2.dueDate) - new Date(task1.dueDate))
+        console.log(sortedTasks)
+        document.querySelector(".tasksList").innerHTML = ""
+        for (const task of sortedTasks) {
             const taskHTML = domObject.taskComponent(task)
-            // document.querySelector(".tasksList").innerHTML += taskHTML
-        })
+            const taskElement = document.querySelector(".tasksList")
+            taskElement.innerHTML += taskHTML
+        }
 
 
     },
+    // end Sisi (tasks)
 
     eventsList() {
         // **TEST DATA - delete later

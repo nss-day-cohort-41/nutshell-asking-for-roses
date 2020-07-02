@@ -22,12 +22,33 @@ const domObject = {
         </span>
         </section>`
     },
-    
+   
+    //Sisi -start (tasks component representation)
     taskComponent(taskObject) {
-
+        
+        const taskHTMLRepresentation = `
+        <section class="tasksList__Item">
+                    <div class="tasksList__Item__Content">
+                        <label for="tasksListCompletedCheckbox">Completed</label>
+                        <input type="checkbox" value="false" id="tasksListCompletedCheckbox--${taskObject.id}">
+                        <p class="tasksList__Item__DueDate">${taskObject.dueDate}</p>
+                        <p class="tasksList__Item__Input">${taskObject.name}</p>
+                    </div>
+                        
+                    <div>
+                        <button type="button" id="tasksDeleteButton--${taskObject.id}">Delete Task Button</button>
+                    </div>
+        </section>
+        `
+        return taskHTMLRepresentation
     },
+   
+        
+    
+    //Sisi- end (task)
 
     eventComponent(eventObject) {
+        
 
     },
 

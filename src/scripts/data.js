@@ -23,6 +23,17 @@ const API = {
             body: JSON.stringify(userObj)
         })
     },
+    // async/await fetch
+    //array to pass the fetched task objects from database 
+    userTaskArray: [],
+
+    async fetchUsers(endpoint) {
+    const res = await fetch(endpoint);
+    let data = await res.json();
+    data.filter(tasks => tasks.userId)
+    this.userTaskArray = data
+    console.log(this.userTaskArray)
+  },
 
     // Tasha Lane created API fetch calls
 
@@ -115,6 +126,24 @@ const API = {
             .then(response => response)
     },
 
+    // Sisi (delete for task)
+    deleteTaskEntry (taskEntryId) {
+        return fetch(`http://localhost:8088/tasks/${taskEntryId}`, {
+            method: "DELETE"
+        })
+        .then(response => response.json())
+    },
+    //edit completed property
+    updateTaskCompletion (taskEntryId, taskObj) {
+        return fetch(`http://localhost:8088/tasks/${taskEntryId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(taskObj)
+            })
+        },
+
     // Edit message call by David Larsen
     editMessage: (messageObject, messageId) => {
         return fetch(`http://localhost:8088/messages/${messageId}`, {
@@ -127,3 +156,5 @@ const API = {
     }
 }
 export default API
+
+

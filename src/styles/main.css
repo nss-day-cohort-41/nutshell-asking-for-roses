@@ -1,4 +1,5 @@
 @import url("registration.css");
+@import url("forms.css");
 
 body {
     background-color: var(--gray);
