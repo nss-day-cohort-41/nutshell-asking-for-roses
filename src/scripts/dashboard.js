@@ -110,7 +110,7 @@ const loadDashboard = () => {
   const NewArticleSave = document.querySelector("#submitNewArticle")
   
   NewArticleSave.addEventListener("click", (event) => {
-    event.preventDefault()
+    //event.preventDefault()
     const articleURL = document.getElementById("newArticleURL").value
     const articleTitle = document.getElementById("newArticleTitle").value
     const articleSynopsis = document.getElementById("newArticleSynopsis").value
@@ -135,7 +135,7 @@ const loadDashboard = () => {
           //pass the new variable through the save "POST request"
           //.then return with a get request, which now includes the object submitted in the post request
           //.then take that response, clear the input fields, 
-          //....and return the render object using the showJournalEntries method that is invoked with the getJournalEntries Response
+          //....and return the render object 
           API.newArticlesEntry(articleEntrySubmit).then(() => {
             return API.getArticlesData()
           })
@@ -144,17 +144,18 @@ const loadDashboard = () => {
             hiddenArticlesForm.classList.toggle("hidden");
             return renderToDom.articlesList(allArticleObjectsFromAPI)
           })   
-        } 
+          
+        }
+       
     } 
-    // //Cancel and Close Article Submit Popup instead of saving it
-    // if (event.target.id = document.querySelector(".articlesCancelButton")) {
-    //   //clearinputs()
-    //   //step out of popup.. "display: none?" ...classList hidden?
-    // }
   
-  })
-
-
+  })  
+  const cancelNewArticle = document.querySelector("#cancelNewArticle")
+  cancelNewArticle.addEventListener("click", clickEvent => {
+    hiddenArticlesForm.classList.toggle("hidden");
+    })
+  
+  
 }
 
 export default loadDashboard

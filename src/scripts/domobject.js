@@ -32,6 +32,11 @@ const domObject = {
     },
 
     articleComponent(articleObject) {
+        // let notCurrentUser = ""
+
+        // if (articleObject.userId != parseInt(sessionStorage.getItem("currentUser"))) {
+        //     notCurrentUser = 
+        // } 
         const articleElement =
         `
             <section class="articlesList__Item">
@@ -46,6 +51,8 @@ const domObject = {
             </section>
         `
         return articleElement
+
+        
     },
 
     friendComponent(friendObject) {
