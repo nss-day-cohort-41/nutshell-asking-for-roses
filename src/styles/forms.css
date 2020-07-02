@@ -1,6 +1,4 @@
-
-
-/* with lots of help from https://medium.com/swlh/how-to-create-a-user-friendly-modal-in-javascript-ffe0871ceadf */
+/* reference from https://medium.com/swlh/how-to-create-a-user-friendly-modal-in-javascript-ffe0871ceadf */
 .popupForm {
     position: fixed;
     left: 0;
@@ -11,7 +9,7 @@
     width: 100vw;
     height: 100vh; 
     padding: 30px;
-    background-color: rgba(149, 97, 184, 0.5);
+    background-color: rgba(221, 205, 231, 0.5);
     display: flex; 
     pointer-events: none; 
     opacity: 0;

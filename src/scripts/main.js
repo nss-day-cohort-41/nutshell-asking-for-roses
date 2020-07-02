@@ -10,7 +10,7 @@ if (sessionStorage.getItem("currentUser")) {
    
 }
 
- 
+ //invoke all user registration functionality
 userRegistration.clickRegistrationLink();
 userRegistration.registrationFormValidator();
 userRegistration.registeredUserLogin();

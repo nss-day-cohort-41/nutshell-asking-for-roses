@@ -23,7 +23,9 @@ const domObject = {
         </section>`
     },
    
+    //Sisi -start (tasks component representation)
     taskComponent(taskObject) {
+        if (taskObject.userId === parseInt(sessionStorage.getItem("currentUser"))) {
         const taskHTMLRepresentation = `
         <section class="tasksList__Item">
                     <div class="tasksList__Item__Content">
@@ -39,7 +41,12 @@ const domObject = {
         </section>
         `
         return taskHTMLRepresentation
+    } else {
+        return taskHTMLRepresentation = ""
+    }
+        
     },
+    //Sisi- end (task)
 
     eventComponent(eventObject) {
         

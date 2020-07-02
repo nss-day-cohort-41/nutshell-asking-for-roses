@@ -1,6 +1,5 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
-import forms from '../scripts/forms/allForms.js'
 import taskFunctions from '../scripts/tasks/taskButtons.js';
 import tasksButtonFunctionality from "./tasks/taskButtonEvents.js";
 
@@ -16,7 +15,6 @@ const loadDashboard = () => {
     hiddenDashboard.classList.toggle("hidden")
     
    
-   
     // Load individual data components
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     API.getTasksData().then((array) => {
@@ -27,19 +25,8 @@ const loadDashboard = () => {
         taskFunctions.editTask()
     })
     
-
-
     renderToDom.eventsList()
     renderToDom.articlesList()
-
-    // Load individual delete functions
-    //invoke add, delete, edit functionality for task buttons
-    
-    //Loading form components
-    //  forms.renderingTaskForm();
-    // forms.renderingEventForm();
-    // forms.renderingArticleForm();
-    
 
 }
 

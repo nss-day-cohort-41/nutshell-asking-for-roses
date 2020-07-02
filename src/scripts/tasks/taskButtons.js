@@ -1,33 +1,12 @@
 import API from '../data.js'
 import renderToDom from '../render.js'
-import forms from '../forms/allForms.js'
 
-
+//Sisi- task events
 const taskFunctions = {
 
-    //getting entry information back based on taskid, then pass the current task name and due date to it??
-    createEditedTask(taskEntryId) {
-        fetch(`http://localhost:8088/tasks/${taskEntryId}`)
-            .then(response => response.json())
-           .then((task) => {
-            const createEditedObject = (task) => {
-                const taskEditedObject = {
-                    "userId": task.userId,
-                    "name": task.name,
-                    "dueDate": task.dueDate,
-                    "completed": true
-                }
-                console.log(taskEditedObject)
-                return createEditedObject
-        
-            }
-           })
-
-    },
-    //add event listeners to task DELETE button
     taskEvents() {
 
-        //delete task
+        //delete task 
         const deleteTaskButton = document.querySelector(".tasksList")
         deleteTaskButton.addEventListener("click", clickEvent => {
             if (event.target.id.startsWith("tasksDeleteButton--")) {
@@ -39,12 +18,13 @@ const taskFunctions = {
                     //get all entries again, render them to DOM
                     .then(() => API.getTasksData())
                     .then((array) => renderToDom.tasksList(array))
-                //edit    
+                  
             } 
         })
 
     },
 
+    //edit task (working)
     editTask() {
         const editTaskButton = document.querySelector(".tasksList")
         editTaskButton.addEventListener("click", clickEvent => {
@@ -52,25 +32,28 @@ const taskFunctions = {
             console.log("edit button working")
                 const taskToEdit = clickEvent.target.id.split("--")[1]
                 const checked = event.target.checked
-                console.log(checked.value)
-
-                if (checked) {
-                    // const taskInput = document.querySelector(".taskInput")
-                    // console.log(taskInput.value)
-                    // const dueDateInput = document.querySelector(".dueDateInput")
-                    this.createEditedTask(taskToEdit)
-                    API.updateTaskCompletion(taskToEdit)
-
-                    
-                    // this.createEditedObject(taskInput.value, dueDateInput.value)
-                }
+                if (checked ===  true) {
+                    fetch(`http://localhost:8088/tasks/${taskToEdit}`)
+                            .then(response => response.json())
+                            .then(task=> {
+                                 
+                                const taskEditedObject = {
+                                        "userId": task.userId,
+                                        "name": task.name,
+                                        "dueDate": task.dueDate,
+                                        "completed": true
+                                    } 
+                                API.updateTaskCompletion(taskToEdit, taskEditedObject)
+                                document.querySelector(".tasksList__Item").innerHTML = ""
+                            })
+                            
+                        }
+                   
+                    }
+                })
+            },
                 
-           
-            }
-        })
-    },
-      // this is the edited to change complete to true in database object
-   
+
     //this is task form object that will be POSTED and displayed on DOM
     createTaskFormObject (name, dueDate, completed = false) {
         const taskFormObject = {
@@ -78,11 +61,13 @@ const taskFunctions = {
             name,
             dueDate,
             completed
-            
         }
         return taskFormObject
     }
-     
+    
 }
+     
+
+
 
 export default taskFunctions

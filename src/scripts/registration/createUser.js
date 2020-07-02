@@ -1,3 +1,4 @@
+//Sisi - create factory function 
 //defining factory function responsible for generating user object
 const createUserObject = (email, username, password) => {
     const userObject = {
