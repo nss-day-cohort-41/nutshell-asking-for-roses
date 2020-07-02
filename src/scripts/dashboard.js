@@ -20,17 +20,16 @@ const loadDashboard = () => {
     .then((friendsList) => renderToDom.friendsList(friendsList))
     .then(() => {
         document.querySelector(".friendsList").addEventListener("click", event => {
-            if (event.target.id.startsWith("--")) {
-                const entryIdToEdit = event.target.id.split("--")[1]
-                fetch(`http://localhost:8088/messages/${entryIdToEdit}`)
-                    .then(response => response.json())
-                    .then(entry => {
-                        document.getElementById("messagesUserInput").value = entry.message
-                        document.getElementById("messageId").value = entry.id
-                    })
+            if (event.target.id.startsWith("deleteFriend--")) {
+                const friendIdToDelete = event.target.id.split("--")[1]
+                API.deleteFriendEntry(friendIdToDelete)
+                    .then(() => API.getFriendsData(currentUserID)
+                    .then(friendsList => renderToDom.friendsList(friendsList)
+                    )
+                )
             }
         })
-    }
+    })
 
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     .then(() => {
@@ -80,10 +79,10 @@ const loadDashboard = () => {
             }
         })
     })
+
     renderToDom.tasksList()
     renderToDom.eventsList()
     renderToDom.articlesList()
-
 
 }
 

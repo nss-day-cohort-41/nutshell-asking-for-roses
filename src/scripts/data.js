@@ -89,6 +89,14 @@ const API = {
             body: JSON.stringify(friendsObject),
         });
     },
+
+    // Delete friend entry by David Larsen
+    deleteFriendEntry: (friendId) => {
+        return fetch(`http://localhost:8088/friends/${friendId}`, {
+            method: "DELETE"
+        })
+    },
+
     newMessagesEntry: (messagesObject) => {
         return fetch("http://localhost:8088/messages", {
             method: "POST",
