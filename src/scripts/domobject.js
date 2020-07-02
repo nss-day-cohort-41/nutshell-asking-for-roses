@@ -41,11 +41,10 @@ const domObject = {
         </section>
         `
         return taskHTMLRepresentation
-    } else {
-        return taskHTMLRepresentation = ""
-    }
-        
+    } 
     },
+        
+    
     //Sisi- end (task)
 
     eventComponent(eventObject) {
