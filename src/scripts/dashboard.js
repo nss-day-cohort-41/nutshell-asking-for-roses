@@ -1,5 +1,7 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
+import taskFunctions from '../scripts/tasks/taskButtons.js';
+import tasksButtonFunctionality from "./tasks/taskButtonEvents.js";
 import createArticleObject from "./createArticle.js"
 import createMessageObject from "./createMessage.js"
 
@@ -81,7 +83,13 @@ const loadDashboard = () => {
         })
     })
 
-    renderToDom.tasksList()
+    API.getTasksData().then((array) => {
+      renderToDom.tasksList(array)})
+      .then(() => {
+          tasksButtonFunctionality()
+          taskFunctions.taskEvents()
+          taskFunctions.editTask()
+      })
     renderToDom.eventsList()
     
     API.getArticlesData().then(articlesCollection => renderToDom.articlesList(articlesCollection))
@@ -108,6 +116,7 @@ const loadDashboard = () => {
     const hiddenArticlesForm = document.querySelector(".newArticleContainer")
     articlesListAddButton.addEventListener("click", (event) => {
       hiddenArticlesForm.classList.toggle("hidden");
+      hiddenArticlesForm.classList.add('is-open')
       console.log("add articles button clicked");
       })
 
@@ -156,6 +165,7 @@ const loadDashboard = () => {
           .then((allArticleObjectsFromAPI) => {
             clearInputs()
             hiddenArticlesForm.classList.toggle("hidden");
+            hiddenArticlesForm.classList.remove('is-open');
             return renderToDom.articlesList(allArticleObjectsFromAPI)
           })   
           
@@ -167,7 +177,9 @@ const loadDashboard = () => {
   //Article Form Cancel Button
   const cancelNewArticle = document.querySelector("#cancelNewArticle")
   cancelNewArticle.addEventListener("click", clickEvent => {
+    const hiddenArticlesForm = document.querySelector(".newArticleContainer")
     hiddenArticlesForm.classList.toggle("hidden");
+    hiddenArticlesForm.classList.remove('is-open');
     })
   
   

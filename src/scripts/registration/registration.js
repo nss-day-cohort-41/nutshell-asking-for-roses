@@ -2,6 +2,9 @@ import API from '../data.js'
 import createUserObject from './createUser.js'
 import loadDashboard from '../dashboard.js'
 
+/* Sisi - login/registration page
+   Brett - toggle to dashboard */
+
 const userRegistration = {
     //registered user login 
     registeredUserLogin() {

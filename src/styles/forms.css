@@ -1,0 +1,36 @@
+/* reference from https://medium.com/swlh/how-to-create-a-user-friendly-modal-in-javascript-ffe0871ceadf */
+.popupForm {
+    position: fixed;
+    left: 0;
+    top: 0; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100vw;
+    height: 100vh; 
+    padding: 30px;
+    background-color: rgba(221, 205, 231, 0.5);
+    display: flex; 
+    pointer-events: none; 
+    opacity: 0;
+  }
+
+  .popupForm.is-open { 
+    pointer-events: all; 
+    opacity: 1;
+  }
+  
+.showPopupContent {
+    overflow: auto;
+    width: 50%; 
+    height: 20%;
+    border-radius: 10px;
+    max-width: 500px; 
+    max-height: 400px; 
+    background-color: #fff;
+}
+
+
+
+
+
