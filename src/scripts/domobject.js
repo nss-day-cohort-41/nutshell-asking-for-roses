@@ -36,10 +36,9 @@ const domObject = {
         `
             <section class="articlesList__Item">
                 <div class="articlesList__Item__Content">
-                    <p>News Title: ${articleObject.title}</p>
-                    <p>Synopsis: ${articleObject.synopsis}</p>
-                    <a href="${articleObject.url}">Full Story</a>
-                    <p>Submitted: on:${articleObject.dateOfNews} </p>
+                    <p><strong>News Title:</strong>  ${articleObject.title}</p>
+                    <p><strong>Synopsis:</strong>  ${articleObject.synopsis}</p>
+                    <a><strong>Link:</strong>  </a><a href="http://${articleObject.url}" target="_blank">Full Story!</a>
                 </div>
                 <div>
                     <button type="button" id="articlesDeleteButton--${articleObject.id}">Delete Article Button</button>
