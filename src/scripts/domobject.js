@@ -52,8 +52,18 @@ const domObject = {
         
     },
 
+    // Friend component by David Larsen
     friendComponent(friendObject) {
-
+        // HTML for each friend to be rendered to the DOM
+        return `<section class = "friendsList__Item">
+            <!-- SINGLE USER NAME ..... ADD EMAIL AS STRECH GOAL?-->
+            <div class="friend__name">
+                <p>${friendObject.user.username}
+            <!-- SINGLE FRIENDS DELETE BUTTON -->
+            <div>
+                <button type="button" class="dashboardButton" id="deleteFriend--${friendObject.id}">Delete Friend</button>
+            </div>
+            </section>`
     }
 }
 

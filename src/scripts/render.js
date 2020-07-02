@@ -96,8 +96,16 @@ const renderToDom = {
             })
     },
 
-    friendsList() {
-  
+    // friendsList function by David Larsen
+    friendsList(friendsArray) {
+
+        const friendsListDOM = document.querySelector(".friendsList")
+        // Clear the friends list
+        friendsListDOM.innerHTML = ""
+        friendsArray.forEach(friend => {
+            const friendHTML = domObject.friendComponent(friend)
+            friendsListDOM.innerHTML += friendHTML
+        })
     }
 }
 
