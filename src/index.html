@@ -108,18 +108,33 @@
                 <!-- COLUMN RIGHT HOLDS ARTICLES LIST, MESSAGE BOARDS AND REAMINING EVENTS LIST -->
                 <div class="columnRight">
                     <!-- ARTICLE LIST -->
-                    <article class="articlesList">
-                        <div class=articleList__Heading>
-                            <h2>NEWS ARTICLES to Expand your Mind</h2>
-                        </div>
+                    <div class=articleList__Heading>
+                        <h2>NEWS ARTICLES to Expand your Mind</h2>
                         <!-- ADD ARTICLES BUTTON -->
                         <div>
-                            <button type="button" class="articlesAddButton">Add Article Button</button>
+                        <button type="button" id="articlesAddButton">Share A News Article</button>
                         </div>
+                    </div>
+                    <article class="articlesList">
                         <!--!!!!!!!!!!!!!!!!!!!!!!!-->
                         <!-- THIS REMAINING SECTION GENERATES DYNAMICALLY INSIDE OF HTML CONVERTER JS FILE-->
                     </article>
-                    
+                     <!-- Tasks Form will initially be hidden -->
+                <div class="newArticleContainer popupForm hidden">
+                    <div class="showPopupContent">
+                    <form class="newArticleForm">
+                        <label for="newArticleURL">Enter URL</label>
+                        <input id="newArticleURL" name="newArticleURL" type="text" placeholder="WWW.GOOGLE.COM"></input>
+                        <label for="newArticleTitle">News Article Title</label>
+                        <input id="newArticleTitle" name="newArticleTitle" type="text" placeholder="Input News Article Title"></input>
+                        <label for="newArticleSynopsis">News Article Synopsis</label>
+                        <input id="newArticleSynopsis" name="newArticleSynopsis" type="text" placeholder="Input News Article Synopsis"></input>
+                        <button id="submitNewArticle" type="button">Save</button>
+                        <button id="cancelNewArticle" type="button">Cancel</button>
+                    </form>
+                    </div>
+                </div>
+
                     <!-- MESSAGING BOARD -->
                     <div class="messagesBoard">
                         <!-- MESSAGING BOARD HEADER -->
