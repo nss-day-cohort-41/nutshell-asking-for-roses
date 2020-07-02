@@ -49,17 +49,20 @@ const taskFunctions = {
         const editTaskButton = document.querySelector(".tasksList")
         editTaskButton.addEventListener("click", clickEvent => {
         if (event.target.id.startsWith("tasksListCompletedCheckbox--")) {
+            console.log("edit button working")
                 const taskToEdit = clickEvent.target.id.split("--")[1]
                 const checked = event.target.checked
                 console.log(checked.value)
 
                 if (checked) {
-                    const taskInput = document.querySelector(".taskInput")
-                    console.log(taskInput.value)
-                    const dueDateInput = document.querySelector(".dueDateInput")
-                    this.createEditedTask();
+                    // const taskInput = document.querySelector(".taskInput")
+                    // console.log(taskInput.value)
+                    // const dueDateInput = document.querySelector(".dueDateInput")
+                    this.createEditedTask(taskToEdit)
+                    API.updateTaskCompletion(taskToEdit)
 
-                    API.updateTaskCompletion(taskToEdit, this.createEditedObject(taskInput.value, dueDateInput.value))
+                    
+                    // this.createEditedObject(taskInput.value, dueDateInput.value)
                 }
                 
            

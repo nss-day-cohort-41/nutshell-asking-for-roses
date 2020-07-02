@@ -20,6 +20,7 @@ import renderToDom from '../render.js'
               popUpContainer.classList.remove('is-open')
 
           })
+        })
 
           //save functionality on SUBMIT button on popup form and POST in databse and display
           const saveNewTaskButton = document.getElementById("submitNewTask")
@@ -38,7 +39,7 @@ import renderToDom from '../render.js'
 
           })
 
-      })
+    
 
  }
 

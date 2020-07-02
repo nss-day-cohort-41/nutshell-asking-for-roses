@@ -16,10 +16,7 @@ const loadDashboard = () => {
     hiddenDashboard.classList.toggle("hidden")
     
    
-    //invoking task functions
    
-    
-    
     // Load individual data components
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     API.getTasksData().then((array) => {
@@ -28,12 +25,9 @@ const loadDashboard = () => {
         tasksButtonFunctionality()
         taskFunctions.taskEvents()
         taskFunctions.editTask()
-    }
-    )
-    
+    })
     
 
-    
 
     renderToDom.eventsList()
     renderToDom.articlesList()

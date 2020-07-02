@@ -117,13 +117,13 @@ const API = {
         .then(response => response.json())
     },
     //edit completed property
-    updateTaskCompletion (taskEntryId, taskObject) {
+    updateTaskCompletion (taskEntryId) {
         return fetch(`http://localhost:8088/tasks/${taskEntryId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
                 },
-                body: JSON.stringify(taskObject)
+                body: JSON.stringify()
             })
         },
 
