@@ -16,6 +16,8 @@ const loadDashboard = () => {
     // Queue current user ID
     const currentUserID = parseInt(sessionStorage.getItem("currentUser"))
     // Load individual data components
+    API.getFriendsData(currentUserID)
+    .then((friendsList) => renderToDom.friendsList(friendsList))
     API.getMessagesData().then(messagesCollection => renderToDom.messagesList(messagesCollection))
     .then(() => {
         // Save new message
