@@ -26,7 +26,7 @@ const domObject = {
     taskComponent(taskObject) {
 
     },
-
+    ///HTML component for eventsList done by Tasha Lane
     eventComponent(eventObject) {
         const eventElement = `
             <section class="eventsList__Item">

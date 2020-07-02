@@ -1,6 +1,7 @@
 import API from "./data.js"
 import renderToDom from "./render.js"
 import createMessageObject from "./createMessage.js"
+import createEventsObject from "./createEvents.js"
 
 /* File created/refactored by David Larsen
     Original "load dashboard" code by Brett Stoudt

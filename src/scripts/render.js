@@ -76,37 +76,42 @@ const renderToDom = {
                 const eventsIdToDelete = event.target.id.split("--")[1];
                 console.log("delete id", eventsIdToDelete);
                 API.deleteEventsEntry(eventsIdToDelete)
-                .then(API.getEventsData)
-                .then(eventsLog => renderToDom.eventsList(eventsLog))
+                    .then(API.getEventsData)
+                    .then(eventsLog => renderToDom.eventsList(eventsLog))
                 
             }
         });
         const hiddenEventsForm = document.querySelector(".newEventContainer")
         const addEventsButton = document.querySelector(".eventsAddButton");
+        const saveEventButton = document.querySelector(".submitEventButton");
         addEventsButton.addEventListener("click", (clickEvent) => {
-        hiddenEventsForm.classList.toggle("hidden");
-        })
-        // Save new events
+            hiddenEventsForm.classList.toggle("hidden");
+            saveEventButton.addEventListener("click", (clickEvent) => {
+                hiddenEventsForm.classList.toggle("hidden");
+        
+                // Save new events
 
-        document.querySelector("#submitNewEvent").addEventListener("click", (event) => {
-            let eventsInput = document.getElementById("eventsUserInput").value
-            let eventsId = document.getElementById("eventsId").value
-            const eventsToSave = createEventObject(eventsInput)
+                document.querySelector("#submitEventButton").addEventListener("click", (event) => {
+                    let eventInput = document.getElementById("eventInput").value
+                    let eventsId = document.getElementById("eventsId").value
+                    const eventsToSave = createEventObject(eventInput)
 
-            // Check if events is new or edited
-            if (eventsId === "") {
+                    // Check if events is new or edited
+                    if (eventsId === "") {
 
-                API.newEventsEntry(eventsToSave)
-                    .then(() => API.getEventsData()
-                        .then(eventsLog => {
-                            // Clear the events blank and refresh events list
-                            eventsInput = ""
-                            renderToDom.eventsList(eventsLog)
-                        }))
-            }
-        })
+                        API.newEventsEntry(eventsToSave)
+                            .then(() => API.getEventsData()
+                                .then(eventsLog => {
+                                    // Clear the events blank and refresh events list
+                                    eventsInput = ""
+                                    renderToDom.eventsList(eventsLog)
+                                }))
+                    }
+                })
+            })
+        });
+
     },
-
 
     
                     
@@ -149,10 +154,11 @@ const renderToDom = {
             })
         },
 
-    friendsList() {
+            friendsList() {
   
-    }
+        }
 }
+
 
 
 export default renderToDom
