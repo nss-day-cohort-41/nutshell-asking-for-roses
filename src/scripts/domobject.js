@@ -43,7 +43,7 @@ const domObject = {
                     <a><strong>Link:</strong>  </a><a href="http://${articleObject.url}" target="_blank">Full Story!</a>
                 </div>
                 <div>
-                    <button type="button" id="articlesDeleteButton--${articleObject.id}">Delete Article Button</button>
+                    <button type="button" id="articlesDeleteButton--${articleObject.id}">Delete</button>
                 </div>    
             </section>
         `
