@@ -31,7 +31,7 @@ Steps to get started:
 11.Overview
 This app is an easy to use social media application allowing our user to create messages,add tasks,schedule events and keep up with current articles,  When the user accesses the site they will begin at "Asking for Roses" registration page. Then they will login with secure email default user name and their own unique password. Users then can get send and receive messages. Chat with friends in a popup box. Create tasks to be complete and reminders. The application displays current interest articles downloaded from customized url. The friends list saves and retrieves friends. The friends list will also allow you to delete and edit. Once on the page you are able to keep up with no only friends but keep a list of scheduled events. The user is given options, and can select an "edit" button. If a edit button is chosen, the user is able to update and save.
 
-Technologies Used
+>Technologies Used
 This project utilizes the following:
 
 HTML
@@ -45,9 +45,9 @@ News
 Friends
 Messages
 Events
-External Libraries
 
-Skills Utilized
+
+>Skills Utilized
 We utilized all skills and concepts learned up to this point in our time here at NSS, including:
 
 Google Docs/Slides Processing Book
